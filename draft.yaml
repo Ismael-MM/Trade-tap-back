@@ -1,0 +1,96 @@
+
+models:
+  Trabajador:
+    Nombre: string
+    Apellido1: string
+    Apellido2: string
+    Direccion: string
+    Provincia: string
+    Localidad: string
+    CP: integer
+    CIF: string
+    Email: string
+    Descripcion: string
+    relationships:
+      hasOne: HorarioTrabajador
+      belongsToMany: Profesion
+
+  HorarioTrabajador:
+    Rango: enum[Lunes-Viernes, Lunes-Sábado, Lunes-Domingo]
+    HoraComienzo: string
+    HoraFinal: string
+    IdTrabajador: integer:foreign_key
+    relationships:
+      belongsTo: Trabajador
+
+  HorarioInhabilitado:
+    Fecha: date
+    IdTrabajador: integer:foreign_key
+    relationships:
+      belongsTo: Trabajador
+
+  Profesion:
+    Nombre: string
+    FamiliaProfesional: string
+    relationships:
+      belongsToMany: Trabajador
+
+  TrabajadorProfesion:
+    IdTrabajador: integer:foreign_key
+    IdProfesion: integer:foreign_key
+
+  Cliente:
+    Nombre: string
+    Apellido1: string
+    Apellido2: string
+    Direccion: string
+    Provincia: string
+    Localidad: string
+    CP: integer
+    Email: string
+    Telefono: string
+    relationships:
+      hasMany: Solicitud
+
+  Tarea:
+    Nombre: string
+    Duracion: string
+    Presupuesto: string
+    IdPropuesta: integer:foreign_key
+    relationships:
+      belongsTo: Propuesta
+
+  Reserva:
+    relationships:
+      hasMany: HorarioReserva
+
+  HorarioReserva:
+    Fecha: date
+    HoraComienzo: string
+    HoraFinal: string
+    IdReserva: integer:foreign_key
+    relationships:
+      belongsTo: Reserva
+
+  Servicio:
+    relationships:
+      belongsTo: Trabajador
+      hasMany: FotosVideos
+
+  Valora:
+    relationships:
+      belongsTo: Trabajador
+      hasMany: FotosVideos
+
+  Valoracion:
+    Puntuacion: integer
+    IdTrabajador: integer:foreign_key
+    IdCliente: integer:foreign_key
+    relationships:
+      belongsTo: Trabajador
+      hasMany: FotosVideos
+
+  FotosVideos:
+    IdValoracion: integer:foreign_key
+    relationships:
+      belongsTo: Valoracion

@@ -94,3 +94,5 @@ models:
     IdValoracion: unsignedInteger
     relationships:
       belongsTo: Valoracion
+
+seeders: Trabajador,Cliente

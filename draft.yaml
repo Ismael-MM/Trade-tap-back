@@ -1,8 +1,17 @@
+<<<<<<< HEAD
 models:
   Trabajador:
     Nombre: string:30
     Apellido1: string:30
     Apellido2: string:30
+=======
+
+models:
+  Trabajador:
+    Nombre: string
+    Apellido1: string
+    Apellido2: string
+>>>>>>> 9a31bb508232ea435d6c2371aab9070491057223
     Direccion: string
     Provincia: string
     Localidad: string
@@ -10,6 +19,7 @@ models:
     CIF: string
     Email: string
     Descripcion: text
+<<<<<<< HEAD
   
   Horario-trabajador:
     Rango: enum:Lunes-Viernes,Lunes-Sabado,Lunes-Domingo
@@ -19,3 +29,88 @@ models:
 
 controllers:
   # ...
+=======
+    relationships:
+      hasOne: HorarioTrabajador
+      belongsToMany: Profesion
+
+  HorarioTrabajador:
+    Rango: enum[Lunes-Viernes, Lunes-Sábado, Lunes-Domingo]
+    HoraComienzo: timestamp
+    HoraFinal: timestamp
+    IdTrabajador: unsignedInteger
+    relationships:
+      belongsTo: Trabajador
+
+  HorarioInhabilitado:
+    Fecha: date
+    IdTrabajador: unsignedInteger
+    relationships:
+      belongsTo: Trabajador
+
+  Profesion:
+    Nombre: string
+    FamiliaProfesional: string
+    relationships:
+      belongsToMany: Trabajador
+
+  TrabajadorProfesion:
+    IdTrabajador: unsignedInteger
+    IdProfesion: unsignedInteger
+
+  Cliente:
+    Nombre: string
+    Apellido1: string
+    Apellido2: string
+    Direccion: string
+    Provincia: string
+    Localidad: string
+    CP: integer
+    Email: string
+    Telefono: string
+    relationships:
+      hasMany: Solicitud
+
+  Tarea:
+    Nombre: string
+    Duracion: string
+    Presupuesto: string
+    IdPropuesta: unsignedInteger
+    relationships:
+      belongsTo: Propuesta
+
+  Reserva:
+    relationships:
+      hasMany: HorarioReserva
+
+  HorarioReserva:
+    Fecha: date
+    HoraComienzo: timestamp
+    HoraFinal: timestamp
+    IdReserva: unsignedInteger
+    relationships:
+      belongsTo: Reserva
+
+  Servicio:
+    relationships:
+      belongsTo: Trabajador
+      hasMany: FotosVideos
+
+  Valora:
+    relationships:
+      belongsTo: Trabajador
+      hasMany: FotosVideos
+
+  Valoracion:
+    Puntuacion: integer
+    IdTrabajador: unsignedInteger
+    IdCliente: unsignedInteger
+    relationships:
+      belongsTo: Trabajador
+      hasMany: FotosVideos
+
+  FotosVideos:
+    IdValoracion: unsignedInteger
+    relationships:
+      belongsTo: Valoracion
+>>>>>>> 9a31bb508232ea435d6c2371aab9070491057223

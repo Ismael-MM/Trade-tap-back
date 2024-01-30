@@ -1,0 +1,21 @@
+models:
+  Trabajador:
+    Nombre: string:30
+    Apellido1: string:30
+    Apellido2: string:30
+    Direccion: string
+    Provincia: string
+    Localidad: string
+    CP: integer
+    CIF: string
+    Email: string
+    Descripcion: text
+  
+  Horario-trabajador:
+    Rango: enum:Lunes-Viernes,Lunes-Sabado,Lunes-Domingo
+    Hora-Comienzo:  time
+    Hora-Final: time
+    
+
+controllers:
+  # ...

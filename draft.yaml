@@ -10,22 +10,22 @@ models:
     CP: integer
     CIF: string
     Email: string
-    Descripcion: string
+    Descripcion: text
     relationships:
       hasOne: HorarioTrabajador
       belongsToMany: Profesion
 
   HorarioTrabajador:
     Rango: enum[Lunes-Viernes, Lunes-Sábado, Lunes-Domingo]
-    HoraComienzo: string
-    HoraFinal: string
-    IdTrabajador: integer:foreign_key
+    HoraComienzo: timestamp
+    HoraFinal: timestamp
+    IdTrabajador: unsignedInteger
     relationships:
       belongsTo: Trabajador
 
   HorarioInhabilitado:
     Fecha: date
-    IdTrabajador: integer:foreign_key
+    IdTrabajador: unsignedInteger
     relationships:
       belongsTo: Trabajador
 
@@ -36,8 +36,8 @@ models:
       belongsToMany: Trabajador
 
   TrabajadorProfesion:
-    IdTrabajador: integer:foreign_key
-    IdProfesion: integer:foreign_key
+    IdTrabajador: unsignedInteger
+    IdProfesion: unsignedInteger
 
   Cliente:
     Nombre: string
@@ -56,7 +56,7 @@ models:
     Nombre: string
     Duracion: string
     Presupuesto: string
-    IdPropuesta: integer:foreign_key
+    IdPropuesta: unsignedInteger
     relationships:
       belongsTo: Propuesta
 
@@ -66,9 +66,9 @@ models:
 
   HorarioReserva:
     Fecha: date
-    HoraComienzo: string
-    HoraFinal: string
-    IdReserva: integer:foreign_key
+    HoraComienzo: timestamp
+    HoraFinal: timestamp
+    IdReserva: unsignedInteger
     relationships:
       belongsTo: Reserva
 
@@ -84,13 +84,13 @@ models:
 
   Valoracion:
     Puntuacion: integer
-    IdTrabajador: integer:foreign_key
-    IdCliente: integer:foreign_key
+    IdTrabajador: unsignedInteger
+    IdCliente: unsignedInteger
     relationships:
       belongsTo: Trabajador
       hasMany: FotosVideos
 
   FotosVideos:
-    IdValoracion: integer:foreign_key
+    IdValoracion: unsignedInteger
     relationships:
       belongsTo: Valoracion

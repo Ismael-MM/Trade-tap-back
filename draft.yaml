@@ -1,17 +1,9 @@
-<<<<<<< HEAD
-models:
-  Trabajador:
-    Nombre: string:30
-    Apellido1: string:30
-    Apellido2: string:30
-=======
 
 models:
   Trabajador:
     Nombre: string
     Apellido1: string
     Apellido2: string
->>>>>>> 9a31bb508232ea435d6c2371aab9070491057223
     Direccion: string
     Provincia: string
     Localidad: string
@@ -19,17 +11,6 @@ models:
     CIF: string
     Email: string
     Descripcion: text
-<<<<<<< HEAD
-  
-  Horario-trabajador:
-    Rango: enum:Lunes-Viernes,Lunes-Sabado,Lunes-Domingo
-    Hora-Comienzo:  time
-    Hora-Final: time
-    
-
-controllers:
-  # ...
-=======
     relationships:
       hasOne: HorarioTrabajador
       belongsToMany: Profesion
@@ -113,4 +94,3 @@ controllers:
     IdValoracion: unsignedInteger
     relationships:
       belongsTo: Valoracion
->>>>>>> 9a31bb508232ea435d6c2371aab9070491057223

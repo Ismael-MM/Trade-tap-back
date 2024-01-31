@@ -1,98 +1,49 @@
 
 models:
   Trabajador:
-    Nombre: string
-    Apellido1: string
-    Apellido2: string
-    Direccion: string
-    Provincia: string
-    Localidad: string
-    CP: integer
-    CIF: string
-    Email: string
-    Descripcion: text
+    nombre: string
+    apellido1: string
+    apellido2: string
+    direccion: string
+    provincia: string
+    localidad: string
+    cp: integer
+    cif: string
+    email: string
+    descripcion: text
     relationships:
       hasOne: HorarioTrabajador
       belongsToMany: Profesion
 
-  HorarioTrabajador:
-    Rango: enum[Lunes-Viernes, Lunes-Sábado, Lunes-Domingo]
-    HoraComienzo: timestamp
-    HoraFinal: timestamp
-    IdTrabajador: unsignedInteger
+  Horario_trabajador:
+    rango: set:Lunes-Viernes,Lunes-Sábado,Lunes-Domingo
+    hora_comienzo: timestamp
+    hora_final: timestamp
+    trabajador_id: unsignedInteger
     relationships:
       belongsTo: Trabajador
 
-  HorarioInhabilitado:
-    Fecha: date
-    IdTrabajador: unsignedInteger
+  Horario_inhabilitado:
+    fecha: date
     relationships:
       belongsTo: Trabajador
 
   Profesion:
-    Nombre: string
-    FamiliaProfesional: string
+    nombre: string
+    familia_profesional: string
     relationships:
       belongsToMany: Trabajador
 
-  TrabajadorProfesion:
-    IdTrabajador: unsignedInteger
-    IdProfesion: unsignedInteger
-
-  Cliente:
-    Nombre: string
-    Apellido1: string
-    Apellido2: string
-    Direccion: string
-    Provincia: string
-    Localidad: string
-    CP: integer
-    Email: string
-    Telefono: string
+  Solicitud:
+    descripcion: text
+    titulo: string
+    estado: set:Acceptado,Pendiente,Rechazado
     relationships:
-      hasMany: Solicitud
+      belongsTo: Users
 
-  Tarea:
-    Nombre: string
-    Duracion: string
-    Presupuesto: string
-    IdPropuesta: unsignedInteger
+  Usuario_valora_trabajador:
+    puntuacion: decimal
     relationships:
-      belongsTo: Propuesta
+      belongsToMany: Trabajador
 
-  Reserva:
-    relationships:
-      hasMany: HorarioReserva
-
-  HorarioReserva:
-    Fecha: date
-    HoraComienzo: timestamp
-    HoraFinal: timestamp
-    IdReserva: unsignedInteger
-    relationships:
-      belongsTo: Reserva
-
-  Servicio:
-    relationships:
-      belongsTo: Trabajador
-      hasMany: FotosVideos
-
-  Valora:
-    relationships:
-      belongsTo: Trabajador
-      hasMany: FotosVideos
-
-  Valoracion:
-    Puntuacion: integer
-    IdTrabajador: unsignedInteger
-    IdCliente: unsignedInteger
-    relationships:
-      belongsTo: Trabajador
-      hasMany: FotosVideos
-
-  FotosVideos:
-    IdValoracion: unsignedInteger
-    relationships:
-      belongsTo: Valoracion
-
-seeders: Trabajador,Cliente
+seeders: trabajadore,users

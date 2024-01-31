@@ -1,2 +1,36 @@
+created:
+    - database/factories/TrabajadoreFactory.php
+    - database/factories/HorarioTrabajadoreFactory.php
+    - database/factories/HorarioInhabilitadoFactory.php
+    - database/factories/ProfesioneFactory.php
+    - database/factories/TrabajadorProfesioneFactory.php
+    - database/factories/SolicitudeFactory.php
+    - database/factories/UsuarioValoraTrabajadorFactory.php
+    - database/migrations/2024_01_31_192013_create_trabajadores_table.php
+    - database/migrations/2024_01_31_192014_create_horario_trabajadores_table.php
+    - database/migrations/2024_01_31_192015_create_horario_inhabilitados_table.php
+    - database/migrations/2024_01_31_192016_create_profesiones_table.php
+    - database/migrations/2024_01_31_192017_create_trabajador_profesiones_table.php
+    - database/migrations/2024_01_31_192018_create_solicitudes_table.php
+    - database/migrations/2024_01_31_192019_create_usuario_valora_trabajadors_table.php
+    - database/migrations/2024_01_31_192020_create_profesion_trabajadore_table.php
+    - database/migrations/2024_01_31_192021_create_profesione_trabajador_table.php
+    - database/migrations/2024_01_31_192022_create_trabajador_usuario_valora_trabajador_table.php
+    - app/Models/trabajadore.php
+    - app/Models/horario_trabajadore.php
+    - app/Models/horario_inhabilitado.php
+    - app/Models/profesione.php
+    - app/Models/trabajador_profesione.php
+    - app/Models/solicitude.php
+    - app/Models/usuario_valora_trabajador.php
+    - database/seeders/TrabajadoreSeeder.php
+    - database/seeders/UsersSeeder.php
 models:
-    User: {  }
+    User: { name: string, apellido1: string, apellido2: string, direccion: string, provincia: string, localidad: string, cp: integer, telefono: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable' }
+    trabajadore: { nombre: string, apellido1: string, apellido2: string, direccion: string, provincia: string, localidad: string, cp: integer, cif: string, email: string, descripcion: text, relationships: { hasOne: HorarioTrabajador, belongsToMany: Profesion } }
+    horario_trabajadore: { rango: 'enum[Lunes-Viernes, Lunes-Sábado, Lunes-Domingo]', hora_comienzo: timestamp, hora_final: timestamp, trabajador_id: unsignedInteger, relationships: { belongsTo: Trabajador } }
+    horario_inhabilitado: { fecha: date, relationships: { belongsTo: Trabajador } }
+    profesione: { nombre: string, familia_profesional: string, relationships: { belongsToMany: Trabajador } }
+    trabajador_profesione: { trabajador_id: unsignedInteger, profesion_id: unsignedInteger }
+    solicitude: { relationships: { belongsTo: Users } }
+    usuario_valora_trabajador: { puntuacion: decimal, relationships: { belongsToMany: Trabajador } }

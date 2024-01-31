@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('direccion');
             $table->string('provincia');
             $table->string('localidad');
-            $table->integer('CP');
+            $table->integer('cp');
             $table->string('telefono')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

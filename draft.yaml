@@ -16,7 +16,7 @@ models:
       hasMany: Solicitud
 
   HorarioTrabajador:
-    rango: enum:Lunes-Viernes,Lunes-Sábado,Lunes-Domingo
+    rango: enum:Lunes-Viernes,Lunes-Sabado,Lunes-Domingo
     hora_comienzo: timestamp
     hora_final: timestamp
     trabajador_id: unsignedInteger
@@ -41,4 +41,18 @@ models:
     relationships:
       belongsTo: Trabajador,Cliente
 
-seeders: 
+seeders: Profesion,Solicitud,HorarioIngabilitado,HorarioTrabajador
+
+controllers:
+  Api/v1/Trabajador:
+    resource: api
+  Api/v1/Cliente:
+    resource: api
+  Api/v1/HorarioTrabajador:
+    resource: api
+  Api/v1/HorarioInhabilitado:
+    resource: api
+  Api/v1/Profesion:
+    resource: api
+  Api/v1/Solicitud:
+    resource: api

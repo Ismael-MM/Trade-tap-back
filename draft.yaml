@@ -3,6 +3,7 @@ models:
   Trabajador:
     cif: string
     descripcion: text
+    situacion: enum:Aceptado,Pendiente,Rechazado default:Pendiente
     relationships:
       morphMany: User
       hasOne: HorarioTrabajador,HorarioInhabilitado
@@ -37,7 +38,7 @@ models:
   Solicitud:
     descripcion: text
     titulo: string
-    estado: enum:Acceptado,Pendiente,Rechazado
+    estado: enum:Aceptado,Pendiente,Rechazado default:Pendiente
     relationships:
       belongsTo: Trabajador,Cliente
 

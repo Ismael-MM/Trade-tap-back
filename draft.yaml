@@ -1,29 +1,33 @@
 
 models:
+  User2:
+    relationships:
+      morphTo: Userable
+
   Trabajador:
-    nombre: string
-    apellido1: string
-    apellido2: string
-    direccion: string
-    provincia: string
-    localidad: string
-    cp: integer
     cif: string
-    email: string
     descripcion: text
     relationships:
-      hasOne: HorarioTrabajador
-      belongsToMany: Profesion
+      morphMany: User
+      hasOne: HorarioTrabajador,HorarioInhabilitado
+      belongsToMany: Profesion,Cliente
+      hasMany: Solicitud
+      
+  Cliente:
+    relationships:
+      belongstoMany: Trabajador
+      morphMany: User
+      hasMany: Solicitud
 
-  Horario_trabajador:
-    rango: set:Lunes-Viernes,Lunes-Sábado,Lunes-Domingo
+  HorarioTrabajador:
+    rango: enum:Lunes-Viernes,Lunes-Sábado,Lunes-Domingo
     hora_comienzo: timestamp
     hora_final: timestamp
     trabajador_id: unsignedInteger
     relationships:
       belongsTo: Trabajador
 
-  Horario_inhabilitado:
+  HorarioInhabilitado:
     fecha: date
     relationships:
       belongsTo: Trabajador
@@ -37,13 +41,8 @@ models:
   Solicitud:
     descripcion: text
     titulo: string
-    estado: set:Acceptado,Pendiente,Rechazado
+    estado: enum:Acceptado,Pendiente,Rechazado
     relationships:
-      belongsTo: Users
+      belongsTo: Trabajador,Cliente
 
-  Usuario_valora_trabajador:
-    puntuacion: decimal
-    relationships:
-      belongsToMany: Trabajador
-
-seeders: trabajadore,users
+seeders: 

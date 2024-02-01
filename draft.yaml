@@ -1,9 +1,5 @@
 
 models:
-  User2:
-    relationships:
-      morphTo: Userable
-
   Trabajador:
     cif: string
     descripcion: text

@@ -4,6 +4,8 @@ models:
     descripcion: text
     presupuesto: decimal
     cantidad: integer
+    relationships:
+      morphTo: Tareable
 
   Propuesta:
     nombre: string
@@ -12,18 +14,23 @@ models:
     trabajador_id: unsignedInteger
     relationships:
       belongsTo: Trabajador,Cliente
+      morphMany: Tarea
 
   Encargo:
     estado: enum:Entregado,Pendiente,Cancelado
     fecha_entregada: date
     relationships:
       belongsTo: Trabajador,Cliente
+      hasOne: Servicio
+      morphMany: Tarea
 
   Reserva:
     estado: enum:Finalizada,Pendiente,En Curso,Cancelada
     relationships:
       belongsTo: Trabajador,Cliente
-      hasOne: HorarioReserva
+      hasMany: HorarioReserva
+      hasOne: Servicio
+      morphMany: Tarea
 
   HorarioReserva:
     fecha: date
@@ -35,7 +42,8 @@ models:
 
   Servicio:
     relationships:
-      hasOne: Encargo,Reserva,Valoracion
+      belongsTo: Encargo,Reserva
+      hasOne: Valoracion
 
   Valoracion:
     Puntuacion: decimal
@@ -45,7 +53,14 @@ models:
     relationships:
       belongsTo: Trabajador,Cliente,Servicio
       hasMany: Multimedia
+  
+  Publicacion:
+    url: string
+    relationships:
+      belongsTo: Trabajador
 
   Multimedia:
-  relationships:
-    belongsTo: Valoracion
+    tipo: enum:Foto,Video
+    url: string
+    relationships:
+      belongsTo: Valoracion

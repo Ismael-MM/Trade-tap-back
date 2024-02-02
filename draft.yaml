@@ -8,13 +8,13 @@ models:
       morphMany: User
       hasOne: HorarioTrabajador,HorarioInhabilitado
       belongsToMany: Profesion,Cliente
-      hasMany: Solicitud
+      hasMany: Solicitud,Propuesta,Reserva,Encargo,Valoracion,Publicacion
       
   Cliente:
     relationships:
-      belongstoMany: Trabajador
+      belongsToMany: Trabajador
       morphMany: User
-      hasMany: Solicitud
+      hasMany: Solicitud,Propuesta,Reserva,Encargo,Valoracion
 
   HorarioTrabajador:
     rango: enum:Lunes-Viernes,Lunes-Sabado,Lunes-Domingo
@@ -42,6 +42,65 @@ models:
     relationships:
       belongsTo: Trabajador,Cliente
 
+
+# parte 2
+  Propuesta:
+    nombre: string
+    descripcion: text
+    cliente_id: unsignedInteger
+    trabajador_id: unsignedInteger
+    relationships:
+      belongsTo: Trabajador,Cliente
+
+  Encargo:
+    estado: enum:Entregado,Pendiente,Cancelado
+    fecha_entregada: date
+    fecha_entregada1: date
+    relationships:
+      belongsTo: Trabajador,Cliente
+      hasOne: Servicio
+
+  Reserva:
+    estado: enum:Finalizada,Pendiente,En Curso,Cancelada
+    relationships:
+      belongsTo: Trabajador,Cliente
+      hasMany: HorarioReserva
+      hasOne: Servicio
+
+  HorarioReserva:
+    fecha: date
+    hora_comienzo: timestamp
+    hora_final: timestamp
+    reserva_id: unsignedInteger
+    relationships:
+      belongsTo: reserva
+
+  Servicio:
+    relationships:
+      belongsTo: Encargo,Reserva
+      hasOne: Valoracion
+
+  Valoracion:
+    Puntuacion: decimal
+    cliente_id: unsignedInteger
+    trabajador_id: unsignedInteger
+    serivicio_id: unsignedInteger
+    relationships:
+      belongsTo: Trabajador,Cliente,Servicio
+      hasMany: Multimedia
+  
+  Publicacion:
+    url: string
+    relationships:
+      belongsTo: Trabajador
+
+  Multimedia:
+    tipo: enum:Foto,Video
+    url: string
+    relationships:
+      belongsTo: Valoracion
+
+
 seeders: Profesion,Solicitud,HorarioIngabilitado,HorarioTrabajador
 
 controllers:
@@ -56,4 +115,21 @@ controllers:
   Api/v1/Profesion:
     resource: api
   Api/v1/Solicitud:
+    resource: api
+# parte 2
+  Api/v1/Propuesta:
+    resource: api
+  Api/v1/Encargo:
+    resource: api
+  Api/v1/Reserva:
+    resource: api
+  Api/v1/HorarioReserva:
+    resource: api
+  Api/v1/Servicio:
+    resource: api
+  Api/v1/Valoracion:
+    resource: api
+  Api/v1/Publicacion:
+    resource: api
+  Api/v1/Multimedia:
     resource: api

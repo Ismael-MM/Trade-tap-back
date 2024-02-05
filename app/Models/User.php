@@ -27,6 +27,7 @@ class User extends Authenticatable
         'telefono',
         'direccion',
         'cp',
+        'usuario',
         'localidad',
         'provincia',
     ];

@@ -5,6 +5,7 @@ models:
     descripcion: text
     situacion: enum:Aceptado,Pendiente,Rechazado default:Pendiente
     relationships:
+      belogsTo:
       morphMany: User
       hasOne: HorarioTrabajador,HorarioInhabilitado
       belongsToMany: Profesion,Cliente

@@ -1,2 +1,2 @@
 models:
-    User: {  }
+    User: { name: string, apellido1: string, apellido2: string, direccion: string, provincia: string, localidad: string, cp: integer, telefono: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable', userable_type: string, userable_id: 'biginteger unsigned' }

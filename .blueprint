@@ -1,2 +1,151 @@
+created:
+    - app/Http/Controllers/Api/v1/TrabajadorController.php
+    - app/Http/Controllers/Api/v1/ClienteController.php
+    - app/Http/Controllers/Api/v1/HorarioTrabajadorController.php
+    - app/Http/Controllers/Api/v1/HorarioInhabilitadoController.php
+    - app/Http/Controllers/Api/v1/ProfesionController.php
+    - app/Http/Controllers/Api/v1/SolicitudController.php
+    - app/Http/Controllers/Api/v1/PropuestaController.php
+    - app/Http/Controllers/Api/v1/EncargoController.php
+    - app/Http/Controllers/Api/v1/ReservaController.php
+    - app/Http/Controllers/Api/v1/HorarioReservaController.php
+    - app/Http/Controllers/Api/v1/ServicioController.php
+    - app/Http/Controllers/Api/v1/ValoracionController.php
+    - app/Http/Controllers/Api/v1/PublicacionController.php
+    - app/Http/Controllers/Api/v1/MultimediaController.php
+    - database/factories/TrabajadorFactory.php
+    - database/factories/ClienteFactory.php
+    - database/factories/HorarioTrabajadorFactory.php
+    - database/factories/HorarioInhabilitadoFactory.php
+    - database/factories/ProfesionFactory.php
+    - database/factories/SolicitudFactory.php
+    - database/factories/PropuestaFactory.php
+    - database/factories/EncargoFactory.php
+    - database/factories/ReservaFactory.php
+    - database/factories/HorarioReservaFactory.php
+    - database/factories/ServicioFactory.php
+    - database/factories/ValoracionFactory.php
+    - database/factories/PublicacionFactory.php
+    - database/factories/MultimediaFactory.php
+    - database/migrations/2024_02_05_213537_create_trabajadors_table.php
+    - database/migrations/2024_02_05_213538_create_clientes_table.php
+    - database/migrations/2024_02_05_213539_create_horario_trabajadors_table.php
+    - database/migrations/2024_02_05_213540_create_horario_inhabilitados_table.php
+    - database/migrations/2024_02_05_213541_create_profesions_table.php
+    - database/migrations/2024_02_05_213542_create_solicituds_table.php
+    - database/migrations/2024_02_05_213543_create_propuestas_table.php
+    - database/migrations/2024_02_05_213544_create_encargos_table.php
+    - database/migrations/2024_02_05_213545_create_reservas_table.php
+    - database/migrations/2024_02_05_213546_create_horario_reservas_table.php
+    - database/migrations/2024_02_05_213547_create_servicios_table.php
+    - database/migrations/2024_02_05_213548_create_valoracions_table.php
+    - database/migrations/2024_02_05_213549_create_publicacions_table.php
+    - database/migrations/2024_02_05_213550_create_multimedia_table.php
+    - database/migrations/2024_02_05_213551_create_profesion_trabajador_table.php
+    - database/migrations/2024_02_05_213552_create_cliente_trabajador_table.php
+    - app/Models/Trabajador.php
+    - app/Models/Cliente.php
+    - app/Models/HorarioTrabajador.php
+    - app/Models/HorarioInhabilitado.php
+    - app/Models/Profesion.php
+    - app/Models/Solicitud.php
+    - app/Models/Propuesta.php
+    - app/Models/Encargo.php
+    - app/Models/Reserva.php
+    - app/Models/HorarioReserva.php
+    - app/Models/Servicio.php
+    - app/Models/Valoracion.php
+    - app/Models/Publicacion.php
+    - app/Models/Multimedia.php
+    - database/seeders/ProfesionSeeder.php
+    - database/seeders/SolicitudSeeder.php
+    - database/seeders/HorarioIngabilitadoSeeder.php
+    - database/seeders/HorarioTrabajadorSeeder.php
+    - tests/Feature/Http/Controllers/Api/v1/TrabajadorControllerTest.php
+    - tests/Feature/Http/Controllers/Api/v1/ClienteControllerTest.php
+    - tests/Feature/Http/Controllers/Api/v1/HorarioTrabajadorControllerTest.php
+    - tests/Feature/Http/Controllers/Api/v1/HorarioInhabilitadoControllerTest.php
+    - tests/Feature/Http/Controllers/Api/v1/ProfesionControllerTest.php
+    - tests/Feature/Http/Controllers/Api/v1/SolicitudControllerTest.php
+    - tests/Feature/Http/Controllers/Api/v1/PropuestaControllerTest.php
+    - tests/Feature/Http/Controllers/Api/v1/EncargoControllerTest.php
+    - tests/Feature/Http/Controllers/Api/v1/ReservaControllerTest.php
+    - tests/Feature/Http/Controllers/Api/v1/HorarioReservaControllerTest.php
+    - tests/Feature/Http/Controllers/Api/v1/ServicioControllerTest.php
+    - tests/Feature/Http/Controllers/Api/v1/ValoracionControllerTest.php
+    - tests/Feature/Http/Controllers/Api/v1/PublicacionControllerTest.php
+    - tests/Feature/Http/Controllers/Api/v1/MultimediaControllerTest.php
+    - app/Http/Requests/Api\v1/TrabajadorStoreRequest.php
+    - app/Http/Requests/Api\v1/TrabajadorUpdateRequest.php
+    - app/Http/Requests/Api\v1/ClienteStoreRequest.php
+    - app/Http/Requests/Api\v1/ClienteUpdateRequest.php
+    - app/Http/Requests/Api\v1/HorarioTrabajadorStoreRequest.php
+    - app/Http/Requests/Api\v1/HorarioTrabajadorUpdateRequest.php
+    - app/Http/Requests/Api\v1/HorarioInhabilitadoStoreRequest.php
+    - app/Http/Requests/Api\v1/HorarioInhabilitadoUpdateRequest.php
+    - app/Http/Requests/Api\v1/ProfesionStoreRequest.php
+    - app/Http/Requests/Api\v1/ProfesionUpdateRequest.php
+    - app/Http/Requests/Api\v1/SolicitudStoreRequest.php
+    - app/Http/Requests/Api\v1/SolicitudUpdateRequest.php
+    - app/Http/Requests/Api\v1/PropuestumStoreRequest.php
+    - app/Http/Requests/Api\v1/PropuestumUpdateRequest.php
+    - app/Http/Requests/Api\v1/EncargoStoreRequest.php
+    - app/Http/Requests/Api\v1/EncargoUpdateRequest.php
+    - app/Http/Requests/Api\v1/ReservaStoreRequest.php
+    - app/Http/Requests/Api\v1/ReservaUpdateRequest.php
+    - app/Http/Requests/Api\v1/HorarioReservaStoreRequest.php
+    - app/Http/Requests/Api\v1/HorarioReservaUpdateRequest.php
+    - app/Http/Requests/Api\v1/ServicioStoreRequest.php
+    - app/Http/Requests/Api\v1/ServicioUpdateRequest.php
+    - app/Http/Requests/Api\v1/ValoracionStoreRequest.php
+    - app/Http/Requests/Api\v1/ValoracionUpdateRequest.php
+    - app/Http/Requests/Api\v1/PublicacionStoreRequest.php
+    - app/Http/Requests/Api\v1/PublicacionUpdateRequest.php
+    - app/Http/Requests/Api\v1/MultimediaStoreRequest.php
+    - app/Http/Requests/Api\v1/MultimediaUpdateRequest.php
+    - app/Http/Resources/Api\v1/TrabajadorCollection.php
+    - app/Http/Resources/Api\v1/TrabajadorResource.php
+    - app/Http/Resources/Api\v1/ClienteCollection.php
+    - app/Http/Resources/Api\v1/ClienteResource.php
+    - app/Http/Resources/Api\v1/HorarioTrabajadorCollection.php
+    - app/Http/Resources/Api\v1/HorarioTrabajadorResource.php
+    - app/Http/Resources/Api\v1/HorarioInhabilitadoCollection.php
+    - app/Http/Resources/Api\v1/HorarioInhabilitadoResource.php
+    - app/Http/Resources/Api\v1/ProfesionCollection.php
+    - app/Http/Resources/Api\v1/ProfesionResource.php
+    - app/Http/Resources/Api\v1/SolicitudCollection.php
+    - app/Http/Resources/Api\v1/SolicitudResource.php
+    - app/Http/Resources/Api\v1/PropuestumCollection.php
+    - app/Http/Resources/Api\v1/PropuestumResource.php
+    - app/Http/Resources/Api\v1/EncargoCollection.php
+    - app/Http/Resources/Api\v1/EncargoResource.php
+    - app/Http/Resources/Api\v1/ReservaCollection.php
+    - app/Http/Resources/Api\v1/ReservaResource.php
+    - app/Http/Resources/Api\v1/HorarioReservaCollection.php
+    - app/Http/Resources/Api\v1/HorarioReservaResource.php
+    - app/Http/Resources/Api\v1/ServicioCollection.php
+    - app/Http/Resources/Api\v1/ServicioResource.php
+    - app/Http/Resources/Api\v1/ValoracionCollection.php
+    - app/Http/Resources/Api\v1/ValoracionResource.php
+    - app/Http/Resources/Api\v1/PublicacionCollection.php
+    - app/Http/Resources/Api\v1/PublicacionResource.php
+    - app/Http/Resources/Api\v1/MultimediaCollection.php
+    - app/Http/Resources/Api\v1/MultimediaResource.php
+updated:
+    - routes/api.php
 models:
     User: { name: string, apellido1: string, apellido2: string, direccion: string, provincia: string, localidad: string, cp: integer, telefono: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable', userable_type: string, userable_id: 'biginteger unsigned' }
+    Trabajador: { cif: string, descripcion: text, situacion: 'enum:Aceptado,Pendiente,Rechazado default:Pendiente', relationships: { morphMany: User, hasOne: 'HorarioTrabajador,HorarioInhabilitado', belongsToMany: 'Profesion,Cliente', hasMany: 'Solicitud,Propuesta,Reserva,Encargo,Valoracion,Publicacion' } }
+    Cliente: { relationships: { belongsToMany: Trabajador, morphMany: User, hasMany: 'Solicitud,Propuesta,Reserva,Encargo,Valoracion' } }
+    HorarioTrabajador: { rango: 'enum:Lunes-Viernes,Lunes-Sabado,Lunes-Domingo', hora_comienzo: timestamp, hora_final: timestamp, trabajador_id: unsignedInteger, relationships: { belongsTo: Trabajador } }
+    HorarioInhabilitado: { fecha: date, relationships: { belongsTo: Trabajador } }
+    Profesion: { nombre: string, familia_profesional: string, relationships: { belongsToMany: Trabajador } }
+    Solicitud: { descripcion: text, titulo: string, estado: 'enum:Aceptado,Pendiente,Rechazado default:Pendiente', relationships: { belongsTo: 'Trabajador,Cliente' } }
+    Propuesta: { nombre: string, descripcion: text, cliente_id: unsignedInteger, trabajador_id: unsignedInteger, relationships: { belongsTo: 'Trabajador,Cliente' } }
+    Encargo: { estado: 'enum:Entregado,Pendiente,Cancelado', fecha_entregada: date, fecha_entregada1: date, relationships: { belongsTo: 'Trabajador,Cliente', hasOne: Servicio } }
+    Reserva: { estado: 'enum:Finalizada,Pendiente,En Curso,Cancelada', relationships: { belongsTo: 'Trabajador,Cliente', hasMany: HorarioReserva, hasOne: Servicio } }
+    HorarioReserva: { fecha: date, hora_comienzo: timestamp, hora_final: timestamp, reserva_id: unsignedInteger, relationships: { belongsTo: reserva } }
+    Servicio: { relationships: { belongsTo: 'Encargo,Reserva', hasOne: Valoracion } }
+    Valoracion: { Puntuacion: decimal, cliente_id: unsignedInteger, trabajador_id: unsignedInteger, serivicio_id: unsignedInteger, relationships: { belongsTo: 'Trabajador,Cliente,Servicio', hasMany: Multimedia } }
+    Publicacion: { url: string, relationships: { belongsTo: Trabajador } }
+    Multimedia: { tipo: 'enum:Foto,Video', url: string, relationships: { belongsTo: Valoracion } }

@@ -15,7 +15,7 @@ class ClienteResource extends JsonResource
         return [
             'id' => $this->id,
             'trabajadors' => TrabajadorCollection::make($this->whenLoaded('trabajadors')),
-            'users' => UserCollection::make($this->whenLoaded('users')),
+            'user' => UserResource::make($this->whenLoaded('user')),
             'valoracions' => ValoracionCollection::make($this->whenLoaded('valoracions')),
         ];
     }

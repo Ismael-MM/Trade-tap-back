@@ -27,22 +27,22 @@ created:
     - database/factories/ValoracionFactory.php
     - database/factories/PublicacionFactory.php
     - database/factories/MultimediaFactory.php
-    - database/migrations/2024_02_05_213537_create_trabajadors_table.php
-    - database/migrations/2024_02_05_213538_create_clientes_table.php
-    - database/migrations/2024_02_05_213539_create_horario_trabajadors_table.php
-    - database/migrations/2024_02_05_213540_create_horario_inhabilitados_table.php
-    - database/migrations/2024_02_05_213541_create_profesions_table.php
-    - database/migrations/2024_02_05_213542_create_solicituds_table.php
-    - database/migrations/2024_02_05_213543_create_propuestas_table.php
-    - database/migrations/2024_02_05_213544_create_encargos_table.php
-    - database/migrations/2024_02_05_213545_create_reservas_table.php
-    - database/migrations/2024_02_05_213546_create_horario_reservas_table.php
-    - database/migrations/2024_02_05_213547_create_servicios_table.php
-    - database/migrations/2024_02_05_213548_create_valoracions_table.php
-    - database/migrations/2024_02_05_213549_create_publicacions_table.php
-    - database/migrations/2024_02_05_213550_create_multimedia_table.php
-    - database/migrations/2024_02_05_213551_create_profesion_trabajador_table.php
-    - database/migrations/2024_02_05_213552_create_cliente_trabajador_table.php
+    - database/migrations/2024_02_06_173247_create_trabajadors_table.php
+    - database/migrations/2024_02_06_173248_create_clientes_table.php
+    - database/migrations/2024_02_06_173249_create_horario_trabajadors_table.php
+    - database/migrations/2024_02_06_173250_create_horario_inhabilitados_table.php
+    - database/migrations/2024_02_06_173251_create_profesions_table.php
+    - database/migrations/2024_02_06_173252_create_solicituds_table.php
+    - database/migrations/2024_02_06_173253_create_propuestas_table.php
+    - database/migrations/2024_02_06_173254_create_encargos_table.php
+    - database/migrations/2024_02_06_173255_create_reservas_table.php
+    - database/migrations/2024_02_06_173256_create_horario_reservas_table.php
+    - database/migrations/2024_02_06_173257_create_servicios_table.php
+    - database/migrations/2024_02_06_173258_create_valoracions_table.php
+    - database/migrations/2024_02_06_173259_create_publicacions_table.php
+    - database/migrations/2024_02_06_173300_create_multimedia_table.php
+    - database/migrations/2024_02_06_173301_create_profesion_trabajador_table.php
+    - database/migrations/2024_02_06_173302_create_cliente_trabajador_table.php
     - app/Models/Trabajador.php
     - app/Models/Cliente.php
     - app/Models/HorarioTrabajador.php
@@ -134,9 +134,9 @@ created:
 updated:
     - routes/api.php
 models:
-    User: { name: string, apellido1: string, apellido2: string, direccion: string, provincia: string, localidad: string, cp: integer, telefono: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable', userable_type: string, userable_id: 'biginteger unsigned' }
-    Trabajador: { cif: string, descripcion: text, situacion: 'enum:Aceptado,Pendiente,Rechazado default:Pendiente', relationships: { morphMany: User, hasOne: 'HorarioTrabajador,HorarioInhabilitado', belongsToMany: 'Profesion,Cliente', hasMany: 'Solicitud,Propuesta,Reserva,Encargo,Valoracion,Publicacion' } }
-    Cliente: { relationships: { belongsToMany: Trabajador, morphMany: User, hasMany: 'Solicitud,Propuesta,Reserva,Encargo,Valoracion' } }
+    User: { name: string, usuario: string, apellido1: string, apellido2: string, direccion: string, provincia: string, localidad: string, cp: integer, telefono: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable', userable_type: 'string nullable', userable_id: 'biginteger unsigned nullable' }
+    Trabajador: { cif: string, descripcion: text, situacion: 'enum:Aceptado,Pendiente,Rechazado default:Pendiente', relationships: { morphOne: User, hasOne: 'HorarioTrabajador,HorarioInhabilitado', belongsToMany: 'Profesion,Cliente', hasMany: 'Solicitud,Propuesta,Reserva,Encargo,Valoracion,Publicacion' } }
+    Cliente: { relationships: { belongsToMany: Trabajador, morphOne: User, hasMany: 'Solicitud,Propuesta,Reserva,Encargo,Valoracion' } }
     HorarioTrabajador: { rango: 'enum:Lunes-Viernes,Lunes-Sabado,Lunes-Domingo', hora_comienzo: timestamp, hora_final: timestamp, trabajador_id: unsignedInteger, relationships: { belongsTo: Trabajador } }
     HorarioInhabilitado: { fecha: date, relationships: { belongsTo: Trabajador } }
     Profesion: { nombre: string, familia_profesional: string, relationships: { belongsToMany: Trabajador } }

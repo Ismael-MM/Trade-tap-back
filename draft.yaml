@@ -5,7 +5,7 @@ models:
     descripcion: text
     situacion: enum:Aceptado,Pendiente,Rechazado default:Pendiente
     relationships:
-      morphMany: User
+      morphOne: User
       hasOne: HorarioTrabajador,HorarioInhabilitado
       belongsToMany: Profesion,Cliente
       hasMany: Solicitud,Propuesta,Reserva,Encargo,Valoracion,Publicacion
@@ -13,7 +13,7 @@ models:
   Cliente:
     relationships:
       belongsToMany: Trabajador
-      morphMany: User
+      morphOne: User
       hasMany: Solicitud,Propuesta,Reserva,Encargo,Valoracion
 
   HorarioTrabajador:

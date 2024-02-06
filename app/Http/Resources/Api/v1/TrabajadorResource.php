@@ -17,7 +17,7 @@ class TrabajadorResource extends JsonResource
             'cif' => $this->cif,
             'descripcion' => $this->descripcion,
             'situacion' => $this->situacion,
-            'users' => UserCollection::make($this->whenLoaded('users')),
+            'user' => UserResource::make($this->whenLoaded('user')),
             'horarioInhabilitado' => HorarioInhabilitadoResource::make($this->whenLoaded('horarioInhabilitado')),
             'clientes' => ClienteCollection::make($this->whenLoaded('clientes')),
             'publicacions' => PublicacionCollection::make($this->whenLoaded('publicacions')),

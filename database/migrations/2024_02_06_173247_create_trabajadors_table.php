@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('trabajadors', function (Blueprint $table) {
             $table->id();
             $table->string('cif');
-            $table->text('descripcion');
+            $table->text('descripcion')->nullable();
             $table->enum('situacion', ["Aceptado","Pendiente","Rechazado"])->default('Pendiente');
             $table->timestamps();
         });

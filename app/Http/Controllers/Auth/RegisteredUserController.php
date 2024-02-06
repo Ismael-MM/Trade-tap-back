@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cliente;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -39,6 +40,12 @@ class RegisteredUserController extends Controller
             'telefono' => $request->telefono,
             'password' => Hash::make($request->password),
         ]);
+
+        if (!$request->has('cif')) {
+            $cliente = Cliente::create();
+
+            $cliente->user()->save($user);
+        }
 
         event(new Registered($user));
 

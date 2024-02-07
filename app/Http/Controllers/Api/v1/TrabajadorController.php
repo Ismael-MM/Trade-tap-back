@@ -13,33 +13,33 @@ use Illuminate\Http\Response;
 
 class TrabajadorController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         $trabajadors = Trabajador::all();
 
         return new TrabajadorCollection($trabajadors);
     }
 
-    public function store(TrabajadorStoreRequest $request): Response
+    public function store(TrabajadorStoreRequest $request)
     {
         $trabajador = Trabajador::create($request->validated());
 
         return new TrabajadorResource($trabajador);
     }
 
-    public function show(Request $request, Trabajador $trabajador): Response
+    public function show(Request $request, Trabajador $trabajador)
     {
         return new TrabajadorResource($trabajador);
     }
 
-    public function update(TrabajadorUpdateRequest $request, Trabajador $trabajador): Response
+    public function update(TrabajadorUpdateRequest $request, Trabajador $trabajador)
     {
         $trabajador->update($request->validated());
 
         return new TrabajadorResource($trabajador);
     }
 
-    public function destroy(Request $request, Trabajador $trabajador): Response
+    public function destroy(Request $request, Trabajador $trabajador)
     {
         $trabajador->delete();
 

@@ -13,33 +13,33 @@ use Illuminate\Http\Response;
 
 class ValoracionController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         $valoracions = Valoracion::all();
 
         return new ValoracionCollection($valoracions);
     }
 
-    public function store(ValoracionStoreRequest $request): Response
+    public function store(ValoracionStoreRequest $request)
     {
         $valoracion = Valoracion::create($request->validated());
 
         return new ValoracionResource($valoracion);
     }
 
-    public function show(Request $request, Valoracion $valoracion): Response
+    public function show(Request $request, Valoracion $valoracion)
     {
         return new ValoracionResource($valoracion);
     }
 
-    public function update(ValoracionUpdateRequest $request, Valoracion $valoracion): Response
+    public function update(ValoracionUpdateRequest $request, Valoracion $valoracion)
     {
         $valoracion->update($request->validated());
 
         return new ValoracionResource($valoracion);
     }
 
-    public function destroy(Request $request, Valoracion $valoracion): Response
+    public function destroy(Request $request, Valoracion $valoracion)
     {
         $valoracion->delete();
 

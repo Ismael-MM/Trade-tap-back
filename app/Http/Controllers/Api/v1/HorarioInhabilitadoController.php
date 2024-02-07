@@ -13,33 +13,33 @@ use Illuminate\Http\Response;
 
 class HorarioInhabilitadoController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         $horarioInhabilitados = HorarioInhabilitado::all();
 
         return new HorarioInhabilitadoCollection($horarioInhabilitados);
     }
 
-    public function store(HorarioInhabilitadoStoreRequest $request): Response
+    public function store(HorarioInhabilitadoStoreRequest $request)
     {
         $horarioInhabilitado = HorarioInhabilitado::create($request->validated());
 
         return new HorarioInhabilitadoResource($horarioInhabilitado);
     }
 
-    public function show(Request $request, HorarioInhabilitado $horarioInhabilitado): Response
+    public function show(Request $request, HorarioInhabilitado $horarioInhabilitado)
     {
         return new HorarioInhabilitadoResource($horarioInhabilitado);
     }
 
-    public function update(HorarioInhabilitadoUpdateRequest $request, HorarioInhabilitado $horarioInhabilitado): Response
+    public function update(HorarioInhabilitadoUpdateRequest $request, HorarioInhabilitado $horarioInhabilitado)
     {
         $horarioInhabilitado->update($request->validated());
 
         return new HorarioInhabilitadoResource($horarioInhabilitado);
     }
 
-    public function destroy(Request $request, HorarioInhabilitado $horarioInhabilitado): Response
+    public function destroy(Request $request, HorarioInhabilitado $horarioInhabilitado)
     {
         $horarioInhabilitado->delete();
 

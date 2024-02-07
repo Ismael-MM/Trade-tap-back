@@ -13,33 +13,33 @@ use Illuminate\Http\Response;
 
 class ClienteController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         $clientes = Cliente::all();
 
         return new ClienteCollection($clientes);
     }
 
-    public function store(ClienteStoreRequest $request): Response
+    public function store(ClienteStoreRequest $request)
     {
         $cliente = Cliente::create($request->validated());
 
         return new ClienteResource($cliente);
     }
 
-    public function show(Request $request, Cliente $cliente): Response
+    public function show(Request $request, Cliente $cliente)
     {
         return new ClienteResource($cliente);
     }
 
-    public function update(ClienteUpdateRequest $request, Cliente $cliente): Response
+    public function update(ClienteUpdateRequest $request, Cliente $cliente)
     {
         $cliente->update($request->validated());
 
         return new ClienteResource($cliente);
     }
 
-    public function destroy(Request $request, Cliente $cliente): Response
+    public function destroy(Request $request, Cliente $cliente)
     {
         $cliente->delete();
 

@@ -5,41 +5,41 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\v1\PropuestaStoreRequest;
 use App\Http\Requests\Api\v1\PropuestaUpdateRequest;
-use App\Http\Resources\Api\v1\PropuestumCollection;
-use App\Http\Resources\Api\v1\PropuestumResource;
+use App\Http\Resources\Api\v1\PropuestaCollection;
+use App\Http\Resources\Api\v1\PropuestaResource;
 use App\Models\Propuesta;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class PropuestaController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
-        $propuesta = Propuestum::all();
+        $propuesta = Propuesta::all();
 
-        return new PropuestumCollection($propuesta);
+        return new PropuestaCollection($propuesta);
     }
 
-    public function store(PropuestaStoreRequest $request): Response
+    public function store(PropuestaStoreRequest $request)
     {
-        $propuestum = Propuestum::create($request->validated());
+        $propuestum = Propuesta::create($request->validated());
 
-        return new PropuestumResource($propuestum);
+        return new PropuestaResource($propuestum);
     }
 
-    public function show(Request $request, Propuestum $propuestum): Response
+    public function show(Request $request, Propuesta $propuestum)
     {
-        return new PropuestumResource($propuestum);
+        return new PropuestaResource($propuestum);
     }
 
-    public function update(PropuestaUpdateRequest $request, Propuestum $propuestum): Response
+    public function update(PropuestaUpdateRequest $request, Propuesta $propuestum)
     {
         $propuestum->update($request->validated());
 
-        return new PropuestumResource($propuestum);
+        return new PropuestaResource($propuestum);
     }
 
-    public function destroy(Request $request, Propuestum $propuestum): Response
+    public function destroy(Request $request, Propuesta $propuestum)
     {
         $propuestum->delete();
 

@@ -13,33 +13,33 @@ use Illuminate\Http\Response;
 
 class ServicioController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         $servicios = Servicio::all();
 
         return new ServicioCollection($servicios);
     }
 
-    public function store(ServicioStoreRequest $request): Response
+    public function store(ServicioStoreRequest $request)
     {
         $servicio = Servicio::create($request->validated());
 
         return new ServicioResource($servicio);
     }
 
-    public function show(Request $request, Servicio $servicio): Response
+    public function show(Request $request, Servicio $servicio)
     {
         return new ServicioResource($servicio);
     }
 
-    public function update(ServicioUpdateRequest $request, Servicio $servicio): Response
+    public function update(ServicioUpdateRequest $request, Servicio $servicio)
     {
         $servicio->update($request->validated());
 
         return new ServicioResource($servicio);
     }
 
-    public function destroy(Request $request, Servicio $servicio): Response
+    public function destroy(Request $request, Servicio $servicio)
     {
         $servicio->delete();
 

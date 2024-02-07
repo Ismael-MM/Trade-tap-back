@@ -13,33 +13,33 @@ use Illuminate\Http\Response;
 
 class HorarioReservaController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         $horarioReservas = HorarioReserva::all();
 
         return new HorarioReservaCollection($horarioReservas);
     }
 
-    public function store(HorarioReservaStoreRequest $request): Response
+    public function store(HorarioReservaStoreRequest $request)
     {
         $horarioReserva = HorarioReserva::create($request->validated());
 
         return new HorarioReservaResource($horarioReserva);
     }
 
-    public function show(Request $request, HorarioReserva $horarioReserva): Response
+    public function show(Request $request, HorarioReserva $horarioReserva)
     {
         return new HorarioReservaResource($horarioReserva);
     }
 
-    public function update(HorarioReservaUpdateRequest $request, HorarioReserva $horarioReserva): Response
+    public function update(HorarioReservaUpdateRequest $request, HorarioReserva $horarioReserva)
     {
         $horarioReserva->update($request->validated());
 
         return new HorarioReservaResource($horarioReserva);
     }
 
-    public function destroy(Request $request, HorarioReserva $horarioReserva): Response
+    public function destroy(Request $request, HorarioReserva $horarioReserva)
     {
         $horarioReserva->delete();
 

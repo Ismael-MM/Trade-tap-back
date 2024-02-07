@@ -13,33 +13,33 @@ use Illuminate\Http\Response;
 
 class SolicitudController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request) 
     {
         $solicituds = Solicitud::all();
 
         return new SolicitudCollection($solicituds);
     }
 
-    public function store(SolicitudStoreRequest $request): Response
+    public function store(SolicitudStoreRequest $request)
     {
         $solicitud = Solicitud::create($request->validated());
 
         return new SolicitudResource($solicitud);
     }
 
-    public function show(Request $request, Solicitud $solicitud): Response
+    public function show(Request $request, Solicitud $solicitud)
     {
         return new SolicitudResource($solicitud);
     }
 
-    public function update(SolicitudUpdateRequest $request, Solicitud $solicitud): Response
+    public function update(SolicitudUpdateRequest $request, Solicitud $solicitud)
     {
         $solicitud->update($request->validated());
 
         return new SolicitudResource($solicitud);
     }
 
-    public function destroy(Request $request, Solicitud $solicitud): Response
+    public function destroy(Request $request, Solicitud $solicitud)
     {
         $solicitud->delete();
 

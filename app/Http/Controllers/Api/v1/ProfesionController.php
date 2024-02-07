@@ -13,33 +13,33 @@ use Illuminate\Http\Response;
 
 class ProfesionController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         $profesions = Profesion::all();
 
         return new ProfesionCollection($profesions);
     }
 
-    public function store(ProfesionStoreRequest $request): Response
+    public function store(ProfesionStoreRequest $request)
     {
         $profesion = Profesion::create($request->validated());
 
         return new ProfesionResource($profesion);
     }
 
-    public function show(Request $request, Profesion $profesion): Response
+    public function show(Request $request, Profesion $profesion)
     {
         return new ProfesionResource($profesion);
     }
 
-    public function update(ProfesionUpdateRequest $request, Profesion $profesion): Response
+    public function update(ProfesionUpdateRequest $request, Profesion $profesion)
     {
         $profesion->update($request->validated());
 
         return new ProfesionResource($profesion);
     }
 
-    public function destroy(Request $request, Profesion $profesion): Response
+    public function destroy(Request $request, Profesion $profesion)
     {
         $profesion->delete();
 

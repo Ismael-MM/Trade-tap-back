@@ -13,33 +13,33 @@ use Illuminate\Http\Response;
 
 class EncargoController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         $encargos = Encargo::all();
 
         return new EncargoCollection($encargos);
     }
 
-    public function store(EncargoStoreRequest $request): Response
+    public function store(EncargoStoreRequest $request)
     {
         $encargo = Encargo::create($request->validated());
 
         return new EncargoResource($encargo);
     }
 
-    public function show(Request $request, Encargo $encargo): Response
+    public function show(Request $request, Encargo $encargo)
     {
         return new EncargoResource($encargo);
     }
 
-    public function update(EncargoUpdateRequest $request, Encargo $encargo): Response
+    public function update(EncargoUpdateRequest $request, Encargo $encargo)
     {
         $encargo->update($request->validated());
 
         return new EncargoResource($encargo);
     }
 
-    public function destroy(Request $request, Encargo $encargo): Response
+    public function destroy(Request $request, Encargo $encargo)
     {
         $encargo->delete();
 

@@ -13,33 +13,33 @@ use Illuminate\Http\Response;
 
 class HorarioTrabajadorController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         $horarioTrabajadors = HorarioTrabajador::all();
 
         return new HorarioTrabajadorCollection($horarioTrabajadors);
     }
 
-    public function store(HorarioTrabajadorStoreRequest $request): Response
+    public function store(HorarioTrabajadorStoreRequest $request)
     {
         $horarioTrabajador = HorarioTrabajador::create($request->validated());
 
         return new HorarioTrabajadorResource($horarioTrabajador);
     }
 
-    public function show(Request $request, HorarioTrabajador $horarioTrabajador): Response
+    public function show(Request $request, HorarioTrabajador $horarioTrabajador)
     {
         return new HorarioTrabajadorResource($horarioTrabajador);
     }
 
-    public function update(HorarioTrabajadorUpdateRequest $request, HorarioTrabajador $horarioTrabajador): Response
+    public function update(HorarioTrabajadorUpdateRequest $request, HorarioTrabajador $horarioTrabajador)
     {
         $horarioTrabajador->update($request->validated());
 
         return new HorarioTrabajadorResource($horarioTrabajador);
     }
 
-    public function destroy(Request $request, HorarioTrabajador $horarioTrabajador): Response
+    public function destroy(Request $request, HorarioTrabajador $horarioTrabajador)
     {
         $horarioTrabajador->delete();
 

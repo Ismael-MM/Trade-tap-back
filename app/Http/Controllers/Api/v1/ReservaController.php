@@ -13,33 +13,33 @@ use Illuminate\Http\Response;
 
 class ReservaController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         $reservas = Reserva::all();
 
         return new ReservaCollection($reservas);
     }
 
-    public function store(ReservaStoreRequest $request): Response
+    public function store(ReservaStoreRequest $request)
     {
         $reserva = Reserva::create($request->validated());
 
         return new ReservaResource($reserva);
     }
 
-    public function show(Request $request, Reserva $reserva): Response
+    public function show(Request $request, Reserva $reserva)
     {
         return new ReservaResource($reserva);
     }
 
-    public function update(ReservaUpdateRequest $request, Reserva $reserva): Response
+    public function update(ReservaUpdateRequest $request, Reserva $reserva)
     {
         $reserva->update($request->validated());
 
         return new ReservaResource($reserva);
     }
 
-    public function destroy(Request $request, Reserva $reserva): Response
+    public function destroy(Request $request, Reserva $reserva)
     {
         $reserva->delete();
 

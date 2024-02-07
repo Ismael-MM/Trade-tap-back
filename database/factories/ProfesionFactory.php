@@ -22,7 +22,7 @@ class ProfesionFactory extends Factory
     {
         return [
             'nombre' => $this->faker->word(),
-            'familia_profesional' => $this->faker->word(),
+            'familia_profesional' => $this->faker->sentence(),
         ];
     }
 }

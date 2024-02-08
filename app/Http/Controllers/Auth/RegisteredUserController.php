@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cliente;
+use App\Models\Trabajador;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -23,7 +24,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -41,10 +42,18 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        if (!$request->has('cif')) {
+        if ($request->cif == '') {
             $cliente = Cliente::create();
 
             $cliente->user()->save($user);
+        } else {
+            $trabajador = Trabajador::create([
+                'cif' => $request->cif,
+            ]);
+
+            //$trabajador->profesions()->attach($request->profesiones);
+
+            $trabajador->user()->save($user);
         }
 
         event(new Registered($user));

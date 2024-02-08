@@ -20,6 +20,8 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 Route::get('profesion', [ProfesionController::class, 'index']); //Listado de profesiones
+Route::get('trabajador', [App\Http\Controllers\Api\v1\TrabajadorController::class, 'index']); //Listado de profesiones
+
 
 Route::middleware(['auth:sanctum'])->group(function () {
 

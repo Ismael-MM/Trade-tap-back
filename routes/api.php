@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\v1\ProfesionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,15 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('profesion', [ProfesionController::class, 'index']); //Listado de profesiones
 
 Route::middleware(['auth:sanctum'])->group(function () {
+
+    Route::post('profesion', [ProfesionController::class, 'store']);//Crear una nueva profesión con aut
+    Route::get('profesion/{profesion}', [ProfesionController::class, 'show']);//Mostrar información de una profesión
+    Route::put('profesion/{profesion}', [ProfesionController::class, 'update']);//Modificar información de una profesión
+    Route::patch('profesion/{profesion}', [ProfesionController::class, 'update']);//Modificar información de una profesión
+    Route::delete('profesion/{profesion}', [ProfesionController::class, 'destroy']);
 
     Route::apiResource('Usuario', App\Http\Controllers\Api\v1\UserController::class);
 
@@ -30,8 +38,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('horario-trabajador', App\Http\Controllers\Api\v1\HorarioTrabajadorController::class);
 
     Route::apiResource('horario-inhabilitado', App\Http\Controllers\Api\v1\HorarioInhabilitadoController::class);
-
-    Route::apiResource('profesion', App\Http\Controllers\Api\v1\ProfesionController::class);
 
     Route::apiResource('solicitud', App\Http\Controllers\Api\v1\SolicitudController::class);
 

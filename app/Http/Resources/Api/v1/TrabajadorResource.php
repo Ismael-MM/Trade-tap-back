@@ -14,7 +14,6 @@ class TrabajadorResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'cif' => $this->cif,
             'descripcion' => $this->descripcion,
             'situacion' => $this->situacion,
             'user' => UserResource::make($this->whenLoaded('user')),

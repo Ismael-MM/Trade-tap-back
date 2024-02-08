@@ -17,7 +17,7 @@ class TrabajadorController extends Controller
     {
         $trabajadors = Trabajador::all();
 
-        $trabajadors->load('user', 'horarioInhabilitado', 'clientes', 'publicacions');
+        $trabajadors->load('user');
 
         return new TrabajadorCollection($trabajadors);
     }

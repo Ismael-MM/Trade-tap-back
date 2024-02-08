@@ -51,7 +51,7 @@ class RegisteredUserController extends Controller
                 'cif' => $request->cif,
             ]);
 
-            //$trabajador->profesions()->attach($request->profesiones);
+            $trabajador->profesions()->attach($request->profesiones);
 
             $trabajador->user()->save($user);
         }

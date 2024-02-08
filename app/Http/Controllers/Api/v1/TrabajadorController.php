@@ -17,7 +17,7 @@ class TrabajadorController extends Controller
     {
         $trabajadors = Trabajador::all();
 
-        return new TrabajadorCollection($trabajadors);
+        return new TrabajadorResource($trabajadors);
     }
 
     public function store(TrabajadorStoreRequest $request)

@@ -10,16 +10,34 @@ use App\Http\Resources\Api\v1\TrabajadorResource;
 use App\Models\Trabajador;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Models\Profesion;
 
 class TrabajadorController extends Controller
 {
     public function index(Request $request)
     {
-        $trabajadors = Trabajador::all();
 
-        $trabajadors->load(['user','profesions']);
+        if (request()->exists('top') && request()->exitst('tipo')) {
+         // $profesion = Profesion::findOrFail($profesionId);
+        $profesionId = request()->input('tipo'); 
 
-        return new TrabajadorCollection($trabajadors);
+        $mejoresTrabajadores = Trabajador::whereHas('profesions', function($query) use ($profesionId) {
+                                    $query->where('id', $profesionId);
+                                })
+                                ->withCount('valoracions')
+                                ->orderByDesc('valoracions_count')
+                                ->with('profesions')
+                                ->take(10)
+                                ->get();
+
+        return new TrabajadorCollection($mejoresTrabajadores);
+        }else{
+            $trabajadors = Trabajador::all();
+
+            $trabajadors->load(['user','profesions']);
+            
+            return new TrabajadorCollection($trabajadors);
+        }
     }
 
     public function store(TrabajadorStoreRequest $request)
@@ -31,6 +49,8 @@ class TrabajadorController extends Controller
 
     public function show(Request $request, Trabajador $trabajador)
     {
+        $trabajador->load(['user','profesions']);
+
         return new TrabajadorResource($trabajador);
     }
 

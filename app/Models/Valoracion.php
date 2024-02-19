@@ -17,10 +17,9 @@ class Valoracion extends Model
      * @var array
      */
     protected $fillable = [
-        'Puntuacion',
+        'puntuacion',
         'cliente_id',
         'trabajador_id',
-        'serivicio_id',
         'servicio_id',
     ];
 
@@ -31,10 +30,9 @@ class Valoracion extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'Puntuacion' => 'decimal',
+        'puntuacion' => 'decimal',
         'cliente_id' => 'integer',
         'trabajador_id' => 'integer',
-        'serivicio_id' => 'integer',
         'servicio_id' => 'integer',
     ];
 

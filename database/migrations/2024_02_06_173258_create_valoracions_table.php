@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('valoracions', function (Blueprint $table) {
             $table->id();
-            $table->decimal('Puntuacion');
+            $table->decimal('puntuacion');
             $table->foreignId('cliente_id');
             $table->foreignId('trabajador_id');
-            $table->unsignedInteger('serivicio_id');
             $table->foreignId('servicio_id');
             $table->timestamps();
         });

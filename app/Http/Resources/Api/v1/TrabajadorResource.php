@@ -20,6 +20,7 @@ class TrabajadorResource extends JsonResource
             'horarioInhabilitado' => HorarioInhabilitadoResource::make($this->whenLoaded('horarioInhabilitado')),
             'clientes' => ClienteCollection::make($this->whenLoaded('clientes')),
             'publicacions' => PublicacionCollection::make($this->whenLoaded('publicacions')),
+            'valoracion' => $this->whenLoaded('valoracions') ? $this->valoracions->avg('Puntuacion') : null,
         ];
     }
 }

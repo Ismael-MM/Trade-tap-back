@@ -21,7 +21,8 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 Route::get('profesion', [ProfesionController::class, 'index']); //Listado de profesiones
-Route::get('trabajador', [App\Http\Controllers\Api\v1\TrabajadorController::class, 'index']); //Listado de profesiones
+Route::get('trabajador', [TrabajadorController::class, 'index']); //Listado de profesiones
+Route::get('trabajador/{trabajador}', [TrabajadorController::class, 'show']);
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
@@ -33,7 +34,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('profesion/{profesion}', [ProfesionController::class, 'destroy']);
 
     Route::post('trabajador', [TrabajadorController::class, 'store']);//Crear una nueva profesión con aut
-    Route::get('trabajador/{trabajador}', [TrabajadorController::class, 'show']);//Mostrar información de una profesión
     Route::put('trabajador/{trabajador}', [TrabajadorController::class, 'update']);//Modificar información de una profesión
     Route::patch('trabajador/{trabajador}', [TrabajadorController::class, 'update']);//Modificar información de una profesión
     Route::delete('trabajador/{trabajador}', [TrabajadorController::class, 'destroy']);

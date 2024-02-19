@@ -16,11 +16,13 @@ class TrabajadorResource extends JsonResource
             'id' => $this->id,
             'descripcion' => $this->descripcion,
             'situacion' => $this->situacion,
+            'valoracion' => $this->valoracions()->avg('puntuacion'),
+            'valaraciones_totales' => $this->valoracions()->count(),
             'user' => UserResource::make($this->whenLoaded('user')),
             'horarioInhabilitado' => HorarioInhabilitadoResource::make($this->whenLoaded('horarioInhabilitado')),
             'clientes' => ClienteCollection::make($this->whenLoaded('clientes')),
             'publicacions' => PublicacionCollection::make($this->whenLoaded('publicacions')),
-            'valoracion' => $this->whenLoaded('valoracions') ? $this->valoracions->avg('Puntuacion') : null,
+            'profesiones' => ProfesionCollection::make($this->whenLoaded('profesions')),
         ];
     }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\ProfesionController;
+use App\Http\Controllers\Api\v1\TrabajadorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,11 +32,15 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::patch('profesion/{profesion}', [ProfesionController::class, 'update']);//Modificar información de una profesión
     Route::delete('profesion/{profesion}', [ProfesionController::class, 'destroy']);
 
-    Route::apiResource('Usuario', App\Http\Controllers\Api\v1\UserController::class);
-
-    Route::apiResource('trabajador', App\Http\Controllers\Api\v1\TrabajadorController::class);
+    Route::post('trabajador', [TrabajadorController::class, 'store']);//Crear una nueva profesión con aut
+    Route::get('trabajador/{trabajador}', [TrabajadorController::class, 'show']);//Mostrar información de una profesión
+    Route::put('trabajador/{trabajador}', [TrabajadorController::class, 'update']);//Modificar información de una profesión
+    Route::patch('trabajador/{trabajador}', [TrabajadorController::class, 'update']);//Modificar información de una profesión
+    Route::delete('trabajador/{trabajador}', [TrabajadorController::class, 'destroy']);
 
     Route::apiResource('cliente', App\Http\Controllers\Api\v1\ClienteController::class);
+
+    Route::apiResource('Usuario', App\Http\Controllers\Api\v1\UserController::class);
 
     Route::apiResource('horario-trabajador', App\Http\Controllers\Api\v1\HorarioTrabajadorController::class);
 

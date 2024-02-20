@@ -12,6 +12,32 @@ class ProfesionSeeder extends Seeder
      */
     public function run(): void
     {
-        Profesion::factory()->count(5)->create();
+        $profesiones = [
+            'Fontanero',
+            'Carpintero',
+            'Electricista',
+            'Jardinero',
+            'Soldador',
+            'Mecánico',
+            'Cocinero',
+            'Técnico',
+            'Diseñador',
+            'Albañil',
+            'Crupier',
+            'Jamonero',
+            'Camarero',
+            'Dj',
+            'Servicios Caterin',
+            'Frigorista',
+            'Caldeleria',
+            'Informático',
+        ];
+
+        foreach ($profesiones as $profesion) {
+            Profesion::create([
+                'nombre' => $profesion,
+                'familia_profesional' => 'Profesiones'
+            ]);
+        }
     }
 }

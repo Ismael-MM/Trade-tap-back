@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('usuario');
             $table->string('apellido1');
             $table->string('apellido2')->nullable();
+            $table->string('rol', 50);
             $table->string('direccion');
             $table->string('provincia');
             $table->string('localidad');

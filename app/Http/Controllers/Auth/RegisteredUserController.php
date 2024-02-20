@@ -34,6 +34,7 @@ class RegisteredUserController extends Controller
             'usuario' => $request->usuario,
             'apellido1' => $request->apellido1,
             'apellido2' => $request->apellido2,
+            'rol' => $request->cif==''? 'cliente':'trabajador',
             'direccion' => $request->direccion,
             'provincia' => $request->provincia,
             'localidad' => $request->localidad,

@@ -9,8 +9,6 @@ use App\Http\Resources\Api\v1\TrabajadorCollection;
 use App\Http\Resources\Api\v1\TrabajadorResource;
 use App\Models\Trabajador;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use App\Models\Profesion;
 
 class TrabajadorController extends Controller
 {

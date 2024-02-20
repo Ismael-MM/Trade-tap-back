@@ -33,9 +33,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::patch('profesion/{profesion}', [ProfesionController::class, 'update']);//Modificar información de una profesión
     Route::delete('profesion/{profesion}', [ProfesionController::class, 'destroy']);
 
-    Route::post('trabajador', [TrabajadorController::class, 'store']);//Crear una nueva profesión con aut
-    Route::put('trabajador/{trabajador}', [TrabajadorController::class, 'update']);//Modificar información de una profesión
-    Route::patch('trabajador/{trabajador}', [TrabajadorController::class, 'update']);//Modificar información de una profesión
+    Route::post('trabajador', [TrabajadorController::class, 'store']);
+    Route::put('trabajador/{trabajador}', [TrabajadorController::class, 'update']);
+    Route::patch('trabajador/{trabajador}', [TrabajadorController::class, 'update']);
     Route::delete('trabajador/{trabajador}', [TrabajadorController::class, 'destroy']);
 
     Route::apiResource('cliente', App\Http\Controllers\Api\v1\ClienteController::class);

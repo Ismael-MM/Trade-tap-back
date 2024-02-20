@@ -17,27 +17,27 @@ class TrabajadorController extends Controller
     public function index(Request $request)
     {
 
-        if (request()->exists('top') && request()->exitst('tipo')) {
+        if (request()->exists('top') && request()->exists('tipo')) {
          // $profesion = Profesion::findOrFail($profesionId);
         $profesionId = request()->input('tipo'); 
 
-        $mejoresTrabajadores = Trabajador::whereHas('profesions', function($query) use ($profesionId) {
+        $trabajadors = Trabajador::whereHas('profesions', function($query) use ($profesionId) {
                                     $query->where('id', $profesionId);
                                 })
                                 ->withCount('valoracions')
                                 ->orderByDesc('valoracions_count')
-                                ->with('profesions')
+                                ->with(['profesions' => function($query) use ($profesionId) {
+                                    $query->where('id', $profesionId);
+                                },'user'])
                                 ->take(10)
                                 ->get();
-
-        return new TrabajadorCollection($mejoresTrabajadores);
         }else{
             $trabajadors = Trabajador::all();
-
-            $trabajadors->load(['user','profesions']);
-            
-            return new TrabajadorCollection($trabajadors);
         }
+
+        $trabajadors->load(['user','profesions']);
+
+        return new TrabajadorCollection($trabajadors);
     }
 
     public function store(TrabajadorStoreRequest $request)

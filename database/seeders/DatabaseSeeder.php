@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
             ProfesionSeeder::class
         ]);
 
-        // \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(10)->create();
+        \App\Models\Trabajador::factory(10)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

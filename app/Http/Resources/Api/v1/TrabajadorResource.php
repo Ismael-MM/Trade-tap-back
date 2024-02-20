@@ -17,7 +17,7 @@ class TrabajadorResource extends JsonResource
             'descripcion' => $this->descripcion,
             'situacion' => $this->situacion,
             'valoracion' => $this->valoracions()->avg('puntuacion'),
-            'valaraciones_totales' => $this->valoracions()->count(),
+            'valaracionesTotales' => $this->valoracions()->count(),
             'user' => UserResource::make($this->whenLoaded('user')),
             'horarioInhabilitado' => HorarioInhabilitadoResource::make($this->whenLoaded('horarioInhabilitado')),
             'clientes' => ClienteCollection::make($this->whenLoaded('clientes')),

@@ -17,7 +17,7 @@ class SolicitudResource extends JsonResource
             'descripcion' => $this->descripcion,
             'titulo' => $this->titulo,
             'estado' => $this->estado,
-            'trabajador' => TrabajadorResource::make($this->whenLoaded('trabajador'))->only('nombre', 'apellido', 'email'),
+            'trabajador' => TrabajadorResource::make($this->whenLoaded('trabajador'))->only(['user']),
             'cliente_id' => $this->cliente_id,
             'cliente' => ClienteResource::make($this->whenLoaded('cliente')),
         ];

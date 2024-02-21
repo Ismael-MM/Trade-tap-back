@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('descripcion');
             $table->string('titulo');
-            $table->enum('estado', ["Aceptado","Pendiente","Rechazado"])->default('Pendiente');
+            $table->enum('estado', ["Aceptado","Pendiente","Rechazado"])->nullable()->default('Pendiente');
             $table->foreignId('trabajador_id');
             $table->foreignId('cliente_id');
             $table->timestamps();

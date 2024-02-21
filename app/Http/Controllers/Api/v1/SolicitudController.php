@@ -19,7 +19,7 @@ class SolicitudController extends Controller
 
         $solicituds = Solicitud::where('cliente_id', auth()->id())->get();
 
-        $solicituds->load(['trabajador']);
+        $solicituds->load(['trabajador', 'cliente']);
 
         return new SolicitudCollection($solicituds);
     }

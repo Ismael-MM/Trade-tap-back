@@ -15,7 +15,9 @@ class SolicitudController extends Controller
 {
     public function index(Request $request) 
     {
-        $solicituds = Solicitud::all();
+        // $solicituds = Solicitud::all();
+
+        $solicituds = Solicitud::where('cliente_id', auth()->id())->get();
 
         return new SolicitudCollection($solicituds);
     }

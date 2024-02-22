@@ -17,7 +17,9 @@ class SolicitudController extends Controller
     {
         // $solicituds = Solicitud::all();
 
-        $solicituds = Solicitud::where('cliente_id', auth()->id())->get();
+        $user = request()->user();
+
+        $solicituds = Solicitud::where('cliente_id', $user->userable_id)->get();
 
         $solicituds->load(['trabajador', 'cliente']);
 

@@ -30,6 +30,8 @@ class SolicitudController extends Controller
     {
         $solicitud = Solicitud::create($request->validated());
 
+        $solicitud->load(['trabajador', 'cliente']);
+
         return new SolicitudResource($solicitud);
     }
 

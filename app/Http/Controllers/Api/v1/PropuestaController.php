@@ -15,7 +15,9 @@ class PropuestaController extends Controller
 {
     public function index(Request $request)
     {
-        $propuesta = Propuesta::where('cliente_id', auth()->id())->get();
+        $user = request()->user();
+
+        $propuesta = Propuesta::where('cliente_id',$user->userable_id)->get();
 
         $propuesta->load(['trabajador', 'cliente']);
 

@@ -4,7 +4,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\ProfesionController;
 use App\Http\Controllers\Api\v1\TrabajadorController;
-use App\Http\Controllers\Api\v1\SolicitudController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,8 +37,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::put('trabajador/{trabajador}', [TrabajadorController::class, 'update']);
     Route::patch('trabajador/{trabajador}', [TrabajadorController::class, 'update']);
     Route::delete('trabajador/{trabajador}', [TrabajadorController::class, 'destroy']);
-
-    Route::get('solicitud/{solicitud}', [SolicitudController::class, 'show']);
 
     Route::apiResource('solicitud', App\Http\Controllers\Api\v1\SolicitudController::class);
 

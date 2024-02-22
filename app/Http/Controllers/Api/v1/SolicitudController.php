@@ -21,8 +21,10 @@ class SolicitudController extends Controller
 
         if ($user->rol == 'trabajador') {
             $solicituds = Solicitud::where('trabajador_id', $user->userable_id)->get();
-        }else {
+        }else if ($user->rol == 'cliente') {
             $solicituds = Solicitud::where('cliente_id', $user->userable_id)->get();
+        }else{
+            return response()->json(['status' => 'No hay elementos en la base de datos'], 204);
         }
 
         $solicituds->load(['trabajador', 'cliente']);
@@ -42,6 +44,10 @@ class SolicitudController extends Controller
     public function show(Request $request, Solicitud $solicitud)
     {
         $solicitud->load(['trabajador', 'cliente']);
+
+        if (!$solicitud) {
+            return response()->json(['error' => 'No se encontró ninguna solicitud'], 404);
+        }
 
         return new SolicitudResource($solicitud);
     }

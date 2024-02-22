@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\ProfesionController;
 use App\Http\Controllers\Api\v1\TrabajadorController;
+use App\Http\Controllers\Api\v1\SolicitudController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,16 +28,20 @@ Route::get('trabajador/{trabajador}', [TrabajadorController::class, 'show']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
 
-    Route::post('profesion', [ProfesionController::class, 'store']);//Crear una nueva profesión con aut
-    Route::get('profesion/{profesion}', [ProfesionController::class, 'show']);//Mostrar información de una profesión
-    Route::put('profesion/{profesion}', [ProfesionController::class, 'update']);//Modificar información de una profesión
-    Route::patch('profesion/{profesion}', [ProfesionController::class, 'update']);//Modificar información de una profesión
+    Route::post('profesion', [ProfesionController::class, 'store']); //Crear una nueva profesión con aut
+    Route::get('profesion/{profesion}', [ProfesionController::class, 'show']); //Mostrar información de una profesión
+    Route::put('profesion/{profesion}', [ProfesionController::class, 'update']); //Modificar información de una profesión
+    Route::patch('profesion/{profesion}', [ProfesionController::class, 'update']); //Modificar información de una profesión
     Route::delete('profesion/{profesion}', [ProfesionController::class, 'destroy']);
 
     Route::post('trabajador', [TrabajadorController::class, 'store']);
     Route::put('trabajador/{trabajador}', [TrabajadorController::class, 'update']);
     Route::patch('trabajador/{trabajador}', [TrabajadorController::class, 'update']);
     Route::delete('trabajador/{trabajador}', [TrabajadorController::class, 'destroy']);
+
+    Route::get('solicitud/{solicitud}', [SolicitudController::class, 'show']);
+
+    Route::apiResource('solicitud', App\Http\Controllers\Api\v1\SolicitudController::class);
 
     Route::apiResource('cliente', App\Http\Controllers\Api\v1\ClienteController::class);
 
@@ -45,8 +50,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('horario-trabajador', App\Http\Controllers\Api\v1\HorarioTrabajadorController::class);
 
     Route::apiResource('horario-inhabilitado', App\Http\Controllers\Api\v1\HorarioInhabilitadoController::class);
-
-    Route::apiResource('solicitud', App\Http\Controllers\Api\v1\SolicitudController::class);
 
     Route::apiResource('propuesta', App\Http\Controllers\Api\v1\PropuestaController::class);
 

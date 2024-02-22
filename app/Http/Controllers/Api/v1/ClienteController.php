@@ -29,6 +29,8 @@ class ClienteController extends Controller
 
     public function show(Request $request, Cliente $cliente)
     {
+        $cliente->load(['user']);
+
         return new ClienteResource($cliente);
     }
 

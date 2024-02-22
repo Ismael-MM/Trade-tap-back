@@ -33,6 +33,8 @@ class SolicitudController extends Controller
 
     public function show(Request $request, Solicitud $solicitud)
     {
+        $solicitud->load(['trabajador', 'cliente']);
+
         return new SolicitudResource($solicitud);
     }
 

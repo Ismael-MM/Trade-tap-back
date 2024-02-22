@@ -17,7 +17,11 @@ class PropuestaController extends Controller
     {
         $user = request()->user();
 
-        $propuesta = Propuesta::where('cliente_id',$user->userable_id)->get();
+        if ($user->rol == "trabajador") {
+            $propuesta = Propuesta::where('trabajador_id',$user->userable_id)->get();
+        }else {
+            $propuesta = Propuesta::where('cliente_id',$user->userable_id)->get();
+        }
 
         $propuesta->load(['trabajador', 'cliente']);
 

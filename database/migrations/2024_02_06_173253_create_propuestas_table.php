@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('descripcion');
             $table->decimal('presupuesto');
             $table->enum('tipo', ["Encargo", "Reserva"]);
+            $table->foreignId('cliente_id');
             $table->foreignId('trabajador_id');
             $table->timestamps();
         });

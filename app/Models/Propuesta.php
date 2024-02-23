@@ -18,6 +18,8 @@ class Propuesta extends Model
     protected $fillable = [
         'nombre',
         'descripcion',
+        'presupuesto',
+        'tipo',
         'cliente_id',
         'trabajador_id',
     ];

@@ -16,29 +16,11 @@ return [
     */
 
 
-    'paths' => [
-
-        'api/*',
-
-        'sanctum/csrf-cookie',
-
-        'login',
-
-        'register',
-
-        'logout',
-
-        'forgot-password',
-
-        'reset-password',
-
-        'verify-email',
-
-    ],
+    'paths' => ['*'],
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:3000')],
+    'allowed_origins' => explode(',', env('FRONTEND_URLS')),
 
     'allowed_origins_patterns' => [],
 

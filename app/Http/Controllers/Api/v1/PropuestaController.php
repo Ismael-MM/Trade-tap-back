@@ -18,9 +18,9 @@ class PropuestaController extends Controller
         $user = request()->user();
 
         if ($user->rol == "trabajador") {
-            $propuesta = Propuesta::where('trabajador_id',$user->userable_id)->get();
-        }else {
-            $propuesta = Propuesta::where('cliente_id',$user->userable_id)->get();
+            $propuesta = Propuesta::where('trabajador_id', $user->userable_id)->get();
+        } else {
+            $propuesta = Propuesta::where('cliente_id', $user->userable_id)->get();
         }
 
         $propuesta->load(['trabajador', 'cliente']);
@@ -31,6 +31,8 @@ class PropuestaController extends Controller
     public function store(PropuestaStoreRequest $request)
     {
         $propuestum = Propuesta::create($request->validated());
+
+        $propuestum->load(['trabajador', 'cliente']);
 
         return new PropuestaResource($propuestum);
     }

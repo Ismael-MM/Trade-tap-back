@@ -16,24 +16,33 @@ class TrabajadorController extends Controller
     {
 
         if (request()->exists('top') && request()->exists('tipo')) {
-         // $profesion = Profesion::findOrFail($profesionId);
-        $profesionId = request()->input('tipo'); 
+            // $profesion = Profesion::findOrFail($profesionId);
+            $profesionId = request()->input('tipo');
 
-        $trabajadors = Trabajador::whereHas('profesions', function($query) use ($profesionId) {
-                                    $query->where('id', $profesionId);
-                                })
-                                ->withCount('valoracions')
-                                ->orderByDesc('valoracions_count')
-                                ->with(['profesions' => function($query) use ($profesionId) {
-                                    $query->where('id', $profesionId);
-                                },'user'])
-                                ->take(10)
-                                ->get();
-        }else{
+            $trabajadors = Trabajador::whereHas('profesions', function ($query) use ($profesionId) {
+                $query->where('id', $profesionId);
+            })
+                ->withCount('valoracions')
+                ->orderByDesc('valoracions_count')
+                ->with(['profesions' => function ($query) use ($profesionId) {
+                    $query->where('id', $profesionId);
+                }, 'user'])
+                ->take(10)
+                ->get();
+        } else if (request()->exists('cerca')) {
+
+            $userLocalidad = request()->input('cerca');
+
+            $trabajadors = Trabajador::whereHas('user', function ($query) use ($userLocalidad) {
+                $query->where('localidad', $userLocalidad);
+            })
+                ->take(6)
+                ->get();
+        } else {
             $trabajadors = Trabajador::all();
         }
 
-        $trabajadors->load(['user','profesions']);
+        $trabajadors->load(['user', 'profesions']);
 
         return new TrabajadorCollection($trabajadors);
     }
@@ -47,7 +56,7 @@ class TrabajadorController extends Controller
 
     public function show(Request $request, Trabajador $trabajador)
     {
-        $trabajador->load(['user','profesions']);
+        $trabajador->load(['user', 'profesions']);
 
         return new TrabajadorResource($trabajador);
     }

@@ -1,4 +1,3 @@
-
 models:
   Trabajador:
     cif: string
@@ -9,7 +8,7 @@ models:
       hasOne: HorarioTrabajador,HorarioInhabilitado
       belongsToMany: Profesion,Cliente
       hasMany: Solicitud,Propuesta,Reserva,Encargo,Valoracion,Publicacion
-      
+
   Cliente:
     relationships:
       belongsToMany: Trabajador
@@ -42,8 +41,7 @@ models:
     relationships:
       belongsTo: Trabajador,Cliente
 
-
-# parte 2
+  # parte 2
   Propuesta:
     nombre: string
     descripcion: text
@@ -88,7 +86,7 @@ models:
     relationships:
       belongsTo: Trabajador,Cliente,Servicio
       hasMany: Multimedia
-  
+
   Publicacion:
     url: string
     relationships:
@@ -99,7 +97,6 @@ models:
     url: string
     relationships:
       belongsTo: Valoracion
-
 
 seeders: Profesion,Solicitud,HorarioIngabilitado,HorarioTrabajador
 
@@ -116,7 +113,7 @@ controllers:
     resource: api
   Api/v1/Solicitud:
     resource: api
-# parte 2
+  # parte 2
   Api/v1/Propuesta:
     resource: api
   Api/v1/Encargo:

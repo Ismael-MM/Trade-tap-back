@@ -16,16 +16,17 @@ use App\Http\Controllers\Api\v1\TrabajadorController;
 |
 */
 
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
+Route::middleware(['auth:sanctum', 'throttle:4200,1'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('profesion', [ProfesionController::class, 'index']); //Listado de profesiones
-Route::get('trabajador', [TrabajadorController::class, 'index']); //Listado de profesiones
-Route::get('trabajador/{trabajador}', [TrabajadorController::class, 'show']);
+Route::middleware(["throttle:4200,1"])->group(function () {  //solo para usu
+    Route::get('profesion', [ProfesionController::class, 'index']); //Listado de profesiones
+    Route::get('trabajador', [TrabajadorController::class, 'index']); //Listado de profesiones
+    Route::get('trabajador/{trabajador}', [TrabajadorController::class, 'show']);
+});
 
-
-Route::middleware(['auth:sanctum'])->group(function () {
+Route::middleware(['auth:sanctum', 'throttle:4200,1'])->group(function () {
 
     Route::post('profesion', [ProfesionController::class, 'store']); //Crear una nueva profesión con aut
     Route::get('profesion/{profesion}', [ProfesionController::class, 'show']); //Mostrar información de una profesión

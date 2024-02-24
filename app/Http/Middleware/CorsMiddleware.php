@@ -19,7 +19,7 @@ class CorsMiddleware
         $frontendUrl = env('FRONTEND_URL', 'http://localhost:3000');
 
         $headers = [
-            'Access-Control-Allow-Origin' => 'https://ismaelreact.informaticamajada.es',
+            'Access-Control-Allow-Origin' => $frontendUrl,
             'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS',
             'Access-Control-Allow-Headers' => 'Content-Type, Authorization, x-xsrf-token', // Agregar x-xsrf-token
             'Access-Control-Allow-Credentials' => 'true', // Permitir credenciales

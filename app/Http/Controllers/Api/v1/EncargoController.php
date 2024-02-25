@@ -29,11 +29,19 @@ class EncargoController extends Controller
 
     public function show(Request $request, Encargo $encargo)
     {
+        $encargo->load(['trabajador', 'cliente']);
+
+        if (!$encargo) {
+            return response()->json(['error' => 'No se encontró ningun encargo'], 404);
+        }
+
         return new EncargoResource($encargo);
     }
 
     public function update(EncargoUpdateRequest $request, Encargo $encargo)
     {
+        $encargo->load(['trabajador', 'cliente']);
+
         $encargo->update($request->validated());
 
         return new EncargoResource($encargo);

@@ -20,6 +20,8 @@ class ReservaUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'titulo' => ['required', 'string'],
+            'descripcion' => ['required', 'string'],
             'estado' => ['required', 'in:Finalizada,Pendiente,En'],
             'trabajador_id' => ['required', 'integer', 'exists:trabajadors,id'],
             'cliente_id' => ['required', 'integer', 'exists:clientes,id'],

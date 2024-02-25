@@ -20,9 +20,11 @@ class EncargoUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'titulo' => ['required', 'string'],
+            'descripcion' => ['required', 'string'],
             'estado' => ['required', 'in:Entregado,Pendiente,Cancelado'],
-            'fecha_entregada' => ['required', 'date'],
-            'fecha_entregada1' => ['required', 'date'],
+            'fecha_estimada_inicio' => ['required', 'date'],
+            'fecha_estimada_final' => ['required', 'date'],
             'trabajador_id' => ['required', 'integer', 'exists:trabajadors,id'],
             'cliente_id' => ['required', 'integer', 'exists:clientes,id'],
         ];

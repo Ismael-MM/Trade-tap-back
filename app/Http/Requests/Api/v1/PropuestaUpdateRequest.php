@@ -20,7 +20,7 @@ class PropuestaUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nombre' => ['required', 'string'],
+            'titulo' => ['required', 'string'],
             'descripcion' => ['required', 'string'],
             'cliente_id' => ['required', 'integer', 'exists:Clientes,id'],
             'trabajador_id' => ['required', 'integer', 'exists:Trabajadors,id'],

@@ -20,10 +20,15 @@ class PropuestaStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nombre' => ['required', 'string'],
+            'titulo' => ['required', 'string'],
             'descripcion' => ['required', 'string'],
             'cliente_id' => ['required', 'integer', 'exists:Clientes,id'],
             'trabajador_id' => ['required', 'integer', 'exists:Trabajadors,id'],
+            'fecha_estimada_inicio' => ['required', 'date'],
+            'fecha_estimada_final' => ['required', 'date'],
+            'tipo' => ['required', 'in:encargo,reserva'],
+            'presupuesto' => ['required'],
+            'estado' => ['required', 'in:Aceptado,Pendiente,Rechazado'],
         ];
     }
 }

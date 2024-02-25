@@ -13,7 +13,7 @@ use Illuminate\Http\Response;
 
 class SolicitudController extends Controller
 {
-    public function index(Request $request) 
+    public function index(Request $request)
     {
         // $solicituds = Solicitud::all();
 
@@ -21,9 +21,9 @@ class SolicitudController extends Controller
 
         if ($user->rol == 'trabajador') {
             $solicituds = Solicitud::where('trabajador_id', $user->userable_id)->get();
-        }else if ($user->rol == 'cliente') {
+        } else if ($user->rol == 'cliente') {
             $solicituds = Solicitud::where('cliente_id', $user->userable_id)->get();
-        }else{
+        } else {
             return response()->json(['status' => 'No hay elementos en la base de datos'], 204);
         }
 
@@ -54,6 +54,8 @@ class SolicitudController extends Controller
 
     public function update(SolicitudUpdateRequest $request, Solicitud $solicitud)
     {
+        $solicitud->load(['trabajador', 'cliente']);
+
         $solicitud->update($request->validated());
 
         return new SolicitudResource($solicitud);

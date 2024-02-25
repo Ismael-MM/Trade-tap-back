@@ -17,6 +17,7 @@ class PropuestaResource extends JsonResource
             'nombre' => $this->nombre,
             'descripcion' => $this->descripcion,
             'presupuesto' => $this->presupuesto,
+            'fecha_estimada' => $this->fecha_estimada,
             'estado' => $this->estado,
             'cliente_id' => $this->cliente_id,
             'trabajador' => TrabajadorResource::make($this->whenLoaded('trabajador'))->only(['user']),

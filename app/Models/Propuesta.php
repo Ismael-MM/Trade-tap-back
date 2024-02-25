@@ -20,6 +20,8 @@ class Propuesta extends Model
         'descripcion',
         'presupuesto',
         'tipo',
+        'fecha_estimada',
+        'estado',
         'cliente_id',
         'trabajador_id',
     ];

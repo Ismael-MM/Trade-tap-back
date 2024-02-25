@@ -39,6 +39,12 @@ class PropuestaController extends Controller
 
     public function show(Request $request, Propuesta $propuestum)
     {
+        $propuestum->load(['trabajador', 'cliente']);
+
+        if (!$propuestum) {
+            return response()->json(['error' => 'No se encontró ninguna solicitud'], 404);
+        }
+
         return new PropuestaResource($propuestum);
     }
 

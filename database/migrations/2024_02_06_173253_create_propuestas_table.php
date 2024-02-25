@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->text('descripcion');
             $table->decimal('presupuesto')->nullable()->default(0);
+            $table->date('fecha_estimada');
             $table->enum('tipo', ["Encargo", "Reserva"]);
             $table->enum('estado', ["Aceptado", "Pendiente", "Rechazado"])->nullable()->default('Pendiente');
             $table->foreignId('cliente_id');

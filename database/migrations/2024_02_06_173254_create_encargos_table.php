@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('encargos', function (Blueprint $table) {
             $table->id();
+            $table->string('titulo');
+            $table->text('descripcion');
             $table->enum('estado', ["Entregado", "Pendiente", "Cancelado"]);
-            $table->date('fecha_entregada_inicio');
-            $table->date('fecha_entregada_final');
+            $table->date('fecha_estimada_inicio');
+            $table->date('fecha_estimada_final');
             $table->foreignId('trabajador_id');
             $table->foreignId('cliente_id');
             $table->timestamps();

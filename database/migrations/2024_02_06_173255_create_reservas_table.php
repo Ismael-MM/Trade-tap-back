@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('reservas', function (Blueprint $table) {
             $table->id();
-            $table->enum('estado', ["Finalizada","Pendiente","En"]);
+            $table->string('titulo');
+            $table->text('descripcion');
+            $table->enum('estado', ["Finalizada", "Pendiente", "En"]);
             $table->foreignId('trabajador_id');
             $table->foreignId('cliente_id');
             $table->timestamps();

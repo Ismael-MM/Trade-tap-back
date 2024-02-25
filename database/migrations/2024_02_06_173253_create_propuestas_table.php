@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('propuestas', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('titulo');
             $table->text('descripcion');
             $table->decimal('presupuesto')->nullable()->default(0);
             $table->date('fecha_estimada');

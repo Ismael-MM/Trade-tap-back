@@ -39,6 +39,9 @@ class SolicitudEstadoCambiado extends Mailable
      */
     public function content(): Content
     {
+        if ($this->solicitud->estado == "Pendiente") {
+            $this->solicitud->estado = "Rechazada";
+        }
         return (new Content())->view('emails.solicitud-cambiada')->with(['estado' => $this->solicitud->estado]);
     }
     

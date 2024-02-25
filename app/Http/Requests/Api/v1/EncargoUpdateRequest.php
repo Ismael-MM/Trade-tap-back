@@ -25,6 +25,7 @@ class EncargoUpdateRequest extends FormRequest
             'estado' => ['required', 'in:Entregado,Pendiente,Cancelado'],
             'fecha_estimada_inicio' => ['required', 'date'],
             'fecha_estimada_final' => ['required', 'date'],
+            'presupuesto' => ['required'],
             'trabajador_id' => ['required', 'integer', 'exists:trabajadors,id'],
             'cliente_id' => ['required', 'integer', 'exists:clientes,id'],
         ];

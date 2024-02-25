@@ -72,6 +72,12 @@ class SolicitudController extends Controller
 
     public function destroy(Request $request, Solicitud $solicitud)
     {
+        $user = $solicitud->cliente->user;
+        
+        if ($request->has('estado')) {
+            Mail::to($user->email)->send(new SolicitudEstadoCambiado($solicitud));
+        }
+
         $solicitud->delete();
 
         return response()->noContent();

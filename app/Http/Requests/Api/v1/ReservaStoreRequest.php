@@ -22,6 +22,7 @@ class ReservaStoreRequest extends FormRequest
         return [
             'titulo' => ['required', 'string'],
             'descripcion' => ['required', 'string'],
+            'presupuesto' => ['required'],
             'estado' => ['required', 'in:Finalizada,Pendiente,En'],
             'trabajador_id' => ['required', 'integer', 'exists:trabajadors,id'],
             'cliente_id' => ['required', 'integer', 'exists:clientes,id'],

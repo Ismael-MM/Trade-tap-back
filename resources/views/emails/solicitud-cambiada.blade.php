@@ -1,9 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Solicitud Cambiada</title>
+    <title>Solicitud aceptada</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .message {
+            margin-bottom: 20px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
-    <p>La solicitud ha sido {{ $estado }}</p>
+    <div class="container">
+        <h2>Solicitud aceptada</h2>
+        <p class="message">¡Hola!</p>
+        <p class="message">Queríamos informarte que tu solicitud ha sido {{ $estado }}</p>
+        <p>Si tienes alguna pregunta o necesitas más información, no dudes en ponerte en contacto con nosotros.</p>
+        <div class="footer">
+            <p>Atentamente,</p>
+            <p>TradeTap Support</p>
+        </div>
+    </div>
 </body>
 </html>

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('titulo');
             $table->text('descripcion');
+            $table->decimal('presupuesto')->nullable()->default(0);
             $table->enum('estado', ["Entregado", "Pendiente", "Cancelado"]);
             $table->date('fecha_estimada_inicio');
             $table->date('fecha_estimada_final');

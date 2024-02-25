@@ -17,9 +17,12 @@ class Encargo extends Model
      * @var array
      */
     protected $fillable = [
+        'titulo',
+        'descripcion',
+        'presupuesto',
         'estado',
-        'fecha_entregada',
-        'fecha_entregada1',
+        'fecha_estimada_inicio',
+        'fecha_estimada_final',
         'trabajador_id',
         'cliente_id',
     ];

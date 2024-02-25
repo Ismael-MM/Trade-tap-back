@@ -14,10 +14,14 @@ class ReservaResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'titulo' => $this->titulo,
+            'descripcion' => $this->descripcion,
             'estado' => $this->estado,
+            'presupuesto' => $this->presupuesto,
             'trabajador_id' => $this->trabajador_id,
             'cliente_id' => $this->cliente_id,
-            'cliente' => ClienteResource::make($this->whenLoaded('cliente')),
+            'cliente' => ClienteResource::make($this->whenLoaded('cliente'))->only(['user']),
+            'trabajador' => TrabajadorResource::make($this->whenLoaded('trabajador'))->only(['user']),
             'horarioReservas' => HorarioReservaCollection::make($this->whenLoaded('horarioReservas')),
             'servicio' => ServicioResource::make($this->whenLoaded('servicio')),
         ];

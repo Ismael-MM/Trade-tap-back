@@ -18,6 +18,9 @@ class Reserva extends Model
      * @var array
      */
     protected $fillable = [
+        'titulo',
+        'descripcion',
+        'presupuesto',
         'estado',
         'trabajador_id',
         'cliente_id',

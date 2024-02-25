@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('titulo');
             $table->text('descripcion');
-            $table->enum('estado', ["Finalizada", "Pendiente", "En"]);
+            $table->decimal('presupuesto')->nullable()->default(0);
+            $table->enum('estado', ["Finalizada", "Pendiente", "En Curso"]);
             $table->foreignId('trabajador_id');
             $table->foreignId('cliente_id');
             $table->timestamps();

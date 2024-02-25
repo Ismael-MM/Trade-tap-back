@@ -50,6 +50,8 @@ class PropuestaController extends Controller
 
     public function update(PropuestaUpdateRequest $request, Propuesta $propuestum)
     {
+        $propuestum->load(['trabajador', 'cliente']);
+
         $propuestum->update($request->validated());
 
         return new PropuestaResource($propuestum);

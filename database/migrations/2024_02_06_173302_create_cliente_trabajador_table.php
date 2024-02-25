@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('cliente_trabajador', function (Blueprint $table) {
             $table->foreignId('cliente_id');
             $table->foreignId('trabajador_id');
+            $table->integer('valoracion');
         });
     }
 

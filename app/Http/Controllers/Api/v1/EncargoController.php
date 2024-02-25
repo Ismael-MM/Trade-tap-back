@@ -15,7 +15,19 @@ class EncargoController extends Controller
 {
     public function index(Request $request)
     {
+        // $user = request()->user();
+
+        // if ($user->rol == "trabajador") {
+        //     $encargos = Encargo::where('trabajador_id', $user->userable_id)->get();
+        // } else {
+        //     $encargos = Encargo::where('cliente_id', $user->userable_id)->get();
+        // }
+
+        // $encargos->load(['trabajador', 'cliente']);
+
         $encargos = Encargo::all();
+
+        $encargos->load(['trabajador', 'cliente']);
 
         return new EncargoCollection($encargos);
     }
@@ -23,6 +35,8 @@ class EncargoController extends Controller
     public function store(EncargoStoreRequest $request)
     {
         $encargo = Encargo::create($request->validated());
+
+        $encargo->load(['trabajador', 'cliente']);
 
         return new EncargoResource($encargo);
     }

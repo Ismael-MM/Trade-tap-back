@@ -21,6 +21,7 @@ class UserResource extends JsonResource
             'rol' => $this->rol,
             'localidad' => $this->localidad,
             'provincia' => $this->provincia,
+            'telefono' => $this->telefono,
         ];
     }
 }

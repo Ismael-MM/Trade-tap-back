@@ -9,6 +9,7 @@ use App\Http\Resources\Api\v1\SolicitudCollection;
 use App\Http\Resources\Api\v1\SolicitudResource;
 use App\Mail\SolicitudCreada;
 use App\Mail\SolicitudEstadoCambiado;
+use App\Mail\SolicitudNueva;
 use App\Mail\SolicitudRechazada;
 use App\Models\Solicitud;
 use Illuminate\Support\Facades\Mail;
@@ -39,11 +40,13 @@ class SolicitudController extends Controller
     public function store(SolicitudStoreRequest $request)
     {
 
-        $user = request()->user();
-
         $solicitud = Solicitud::create($request->validated());
 
+        $user = request()->user();
+        $trabajador = $solicitud->trabajador->user;
+
         Mail::to($user->email)->send(new SolicitudCreada($solicitud));
+        Mail::to($trabajador->email)->send(new SolicitudNueva($solicitud));
 
         $solicitud->load(['trabajador', 'cliente']);
 

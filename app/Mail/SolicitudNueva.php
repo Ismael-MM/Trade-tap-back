@@ -10,14 +10,13 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Solicitud;
 
-class SolicitudCreada extends Mailable
+class SolicitudNueva extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-
     public $solicitud;
     public function __construct(Solicitud $solicitud)
     {
@@ -30,7 +29,7 @@ class SolicitudCreada extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Su solicitud: ' . $this->solicitud->titulo . ' ha sido creada con exito',
+            subject: 'Tiene una nueva solicitud:' . $this->solicitud->titulo,
         );
     }
 
@@ -40,7 +39,7 @@ class SolicitudCreada extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.solicitud-creada',
+            view: 'emails.solicitud-nueva',
         );
     }
 

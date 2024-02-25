@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Solicitud rechazada</title>
+    <title>Nueva solicitud</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -44,10 +44,11 @@
 <body>
     <div class="container">
         <div class="header">
-            <h2>Solicitud rechazada</h2>
+        <h1>Nueva solicitud</h1>
         </div>
-        <p class="message">Lamentamos informarle que su solicitud ha sido rechazada.</p>
-        <p>Si tiene alguna pregunta o necesita más información, no dude en ponerse en contacto con nosotros.</p>
+        <p class="message">¡Hola!</p>
+        <p class="message">Queríamos informarte que tiene una nueva solicitud.</p>
+        <p>Si tienes alguna pregunta o necesitas más información, no dudes en ponerte en contacto con nosotros.</p>
         <div class="footer">
             <p>Atentamente,</p>
             <p>TradeTap Support</p>

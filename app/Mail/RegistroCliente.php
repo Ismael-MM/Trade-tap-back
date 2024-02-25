@@ -8,9 +8,9 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use App\Models\Solicitud;
+use App\Models\User;
 
-class SolicitudCreada extends Mailable
+class RegistroCliente extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -18,10 +18,10 @@ class SolicitudCreada extends Mailable
      * Create a new message instance.
      */
 
-    public $solicitud;
-    public function __construct(Solicitud $solicitud)
+    public $user;
+    public function __construct(User  $user)
     {
-        $this->solicitud = $solicitud;
+        $this->user = $user;
     }
 
     /**
@@ -30,7 +30,7 @@ class SolicitudCreada extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Su solicitud: ' . $this->solicitud->titulo . ' ha sido creada con exito',
+            subject: 'Registrado correctamente',
         );
     }
 
@@ -39,8 +39,12 @@ class SolicitudCreada extends Mailable
      */
     public function content(): Content
     {
+        $username = $this->user->usuario;
+        $email = $this->user->email;
+
         return new Content(
-            view: 'emails.solicitud-creada',
+            view: 'emails.registro-cliente',
+            with:['username' =>$username, 'email' =>$email]
         );
     }
 

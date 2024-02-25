@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Solicitud rechazada</title>
+    <title>Registrado correctamente</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -44,13 +44,22 @@
 <body>
     <div class="container">
         <div class="header">
-            <h2>Solicitud rechazada</h2>
+            <h1>Registrado correctamente</h1>
         </div>
-        <p class="message">Lamentamos informarle que su solicitud ha sido rechazada.</p>
-        <p>Si tiene alguna pregunta o necesita más información, no dude en ponerse en contacto con nosotros.</p>
+        <div class="content">
+            <p>Estimado usuario,</p>
+            <p>Su cuenta ha sido creada exitosamente.</p>
+            <p>A continuación, encontrará los detalles de su registro:</p>
+            <ul>
+                <li><strong>Nombre de usuario:</strong> {{ $username }}</li>
+                <li><strong>Correo electrónico:</strong> {{ $email }}</li>
+            </ul>
+            <p>Ahora puede iniciar sesión en su cuenta para acceder a nuestros servicios.</p>
+            <p>Gracias por registrarse con nosotros.</p>
+        </div>
         <div class="footer">
             <p>Atentamente,</p>
-            <p>TradeTap Support</p>
+            <p>El equipo de TradeTap</p>
         </div>
     </div>
 </body>

@@ -19,4 +19,15 @@ class MeGustaController extends Controller
 
         return response()->json(['message' => 'Me gusta registrado.'], Response::HTTP_OK);
     }
+
+    public function destroy(Request $request)
+    {
+        $user = request()->user();
+
+        $cliente = Cliente::where('cliente_id', $user->userable_id)->get();
+
+        $cliente->roles()->detach(request()->trabajador_id);
+
+        return response()->json(['message' => 'Me gusta registrado.'], Response::HTTP_OK);
+    }
 }

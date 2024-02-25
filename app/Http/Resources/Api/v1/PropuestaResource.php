@@ -14,12 +14,15 @@ class PropuestaResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'nombre' => $this->nombre,
+            'titulo' => $this->titulo,
             'descripcion' => $this->descripcion,
             'presupuesto' => $this->presupuesto,
-            'fecha_estimada' => $this->fecha_estimada,
+            'fecha_estimada_inicio' => $this->fecha_estimada_inicio,
+            'fecha_estimada_final' => $this->fecha_estimada_final,
+            'tipo' => $this->tipo,
             'estado' => $this->estado,
             'cliente_id' => $this->cliente_id,
+            'trabajador_id' => $this->trabajador_id,
             'trabajador' => TrabajadorResource::make($this->whenLoaded('trabajador'))->only(['user']),
             'cliente' => ClienteResource::make($this->whenLoaded('cliente'))->only(['user']),
         ];

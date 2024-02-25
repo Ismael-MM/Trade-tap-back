@@ -16,11 +16,12 @@ class Propuesta extends Model
      * @var array
      */
     protected $fillable = [
-        'nombre',
+        'titulo',
         'descripcion',
         'presupuesto',
         'tipo',
-        'fecha_estimada',
+        'fecha_estimada_inicio',
+        'fecha_estimada_final',
         'estado',
         'cliente_id',
         'trabajador_id',

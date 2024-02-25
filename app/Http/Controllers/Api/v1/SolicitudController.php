@@ -7,7 +7,9 @@ use App\Http\Requests\Api\v1\SolicitudStoreRequest;
 use App\Http\Requests\Api\v1\SolicitudUpdateRequest;
 use App\Http\Resources\Api\v1\SolicitudCollection;
 use App\Http\Resources\Api\v1\SolicitudResource;
+use App\Mail\SolicitudCreada;
 use App\Mail\SolicitudEstadoCambiado;
+use App\Mail\SolicitudRechazada;
 use App\Models\Solicitud;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
@@ -36,7 +38,12 @@ class SolicitudController extends Controller
 
     public function store(SolicitudStoreRequest $request)
     {
+
+        $user = request()->user();
+
         $solicitud = Solicitud::create($request->validated());
+
+        Mail::to($user->email)->send(new SolicitudCreada($solicitud));
 
         $solicitud->load(['trabajador', 'cliente']);
 
@@ -74,9 +81,7 @@ class SolicitudController extends Controller
     {
         $user = $solicitud->cliente->user;
         
-        if ($request->has('estado')) {
-            Mail::to($user->email)->send(new SolicitudEstadoCambiado($solicitud));
-        }
+        Mail::to($user->email)->send(new SolicitudRechazada($solicitud));
 
         $solicitud->delete();
 

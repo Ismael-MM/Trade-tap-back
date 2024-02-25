@@ -10,15 +10,16 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Solicitud;
 
-class SolicitudEstadoCambiado extends Mailable
+class SolicitudRechazada extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public $solicitud;
 
+    public $solicitud;
+    
     public function __construct(Solicitud $solicitud)
     {
         $this->solicitud = $solicitud;
@@ -39,13 +40,10 @@ class SolicitudEstadoCambiado extends Mailable
      */
     public function content(): Content
     {
-
         return new Content(
-            view: 'emails.solicitud-cambiada',
-            with: ['estado' => $this->solicitud->estado],
+            view: 'emails.solicitud-rechazada',
         );
     }
-    
 
     /**
      * Get the attachments for the message.

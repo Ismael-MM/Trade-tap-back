@@ -7,7 +7,9 @@ use App\Http\Requests\Api\v1\SolicitudStoreRequest;
 use App\Http\Requests\Api\v1\SolicitudUpdateRequest;
 use App\Http\Resources\Api\v1\SolicitudCollection;
 use App\Http\Resources\Api\v1\SolicitudResource;
+use App\Mail\SolicitudEstadoCambiado;
 use App\Models\Solicitud;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -54,9 +56,16 @@ class SolicitudController extends Controller
 
     public function update(SolicitudUpdateRequest $request, Solicitud $solicitud)
     {
+
+        $user = $solicitud->cliente->user;
+
         $solicitud->load(['trabajador', 'cliente']);
 
         $solicitud->update($request->validated());
+
+        if ($request->has('estado')) {
+            Mail::to($user->email)->send(new SolicitudEstadoCambiado($solicitud));
+        }
 
         return new SolicitudResource($solicitud);
     }

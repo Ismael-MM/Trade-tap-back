@@ -10,15 +10,15 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Solicitud;
 
-class SolicitudEstadoCambiado extends Mailable
+class SolicitudCreada extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public $solicitud;
 
+     public $solicitud;
     public function __construct(Solicitud $solicitud)
     {
         $this->solicitud = $solicitud;
@@ -30,7 +30,7 @@ class SolicitudEstadoCambiado extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Su solicitud: ' . $this->solicitud->titulo . ' ha sido actualizada',
+            subject: 'Su solicitud: ' . $this->solicitud->titulo . ' ha sido creada con exito',
         );
     }
 
@@ -39,13 +39,10 @@ class SolicitudEstadoCambiado extends Mailable
      */
     public function content(): Content
     {
-
         return new Content(
-            view: 'emails.solicitud-cambiada',
-            with: ['estado' => $this->solicitud->estado],
+            view: 'emails.solicitud-creada',
         );
     }
-    
 
     /**
      * Get the attachments for the message.

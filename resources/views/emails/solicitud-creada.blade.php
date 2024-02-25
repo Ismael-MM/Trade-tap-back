@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Solicitud aceptada</title>
+    <title>Solicitud creada con exito</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -27,9 +27,9 @@
 </head>
 <body>
     <div class="container">
-        <h2>Solicitud aceptada</h2>
+        <h2>Solicitud creada con exito</h2>
         <p class="message">¡Hola!</p>
-        <p class="message">Queríamos informarte que tu solicitud ha sido {{ $estado }}</p>
+        <p class="message">Queríamos informarte que tu solicitud ha sido creada con éxito.</p>
         <p>Si tienes alguna pregunta o necesitas más información, no dudes en ponerte en contacto con nosotros.</p>
         <div class="footer">
             <p>Atentamente,</p>

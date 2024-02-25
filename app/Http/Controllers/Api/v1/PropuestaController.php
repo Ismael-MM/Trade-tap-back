@@ -42,7 +42,7 @@ class PropuestaController extends Controller
         $propuestum->load(['trabajador', 'cliente']);
 
         if (!$propuestum) {
-            return response()->json(['error' => 'No se encontró ninguna solicitud'], 404);
+            return response()->json(['error' => 'No se encontró ninguna propuesta'], 404);
         }
 
         return new PropuestaResource($propuestum);

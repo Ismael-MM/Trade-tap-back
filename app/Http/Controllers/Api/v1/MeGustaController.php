@@ -15,7 +15,7 @@ class MeGustaController extends Controller
 
         $cliente = Cliente::where('cliente_id', $user->userable_id)->get();
 
-        $cliente->roles()->attach(request()->trabajador_id);
+        $cliente->trabajadors()->attach(request()->trabajador_id);
 
         return response()->json(['message' => 'Me gusta registrado.'], Response::HTTP_OK);
     }
@@ -26,8 +26,19 @@ class MeGustaController extends Controller
 
         $cliente = Cliente::where('cliente_id', $user->userable_id)->get();
 
-        $cliente->roles()->detach(request()->trabajador_id);
+        $cliente->trabajadors()->detach(request()->trabajador_id);
 
         return response()->json(['message' => 'Me gusta registrado.'], Response::HTTP_OK);
+    }
+
+    public function show(Request $request,)
+    {
+        $user = request()->user();
+
+        $cliente = Cliente::where('cliente_id', $user->userable_id)->get();
+
+        $gustas = $cliente->trabajadors;
+
+        return response()->json(['user_roles' => $gustas], Response::HTTP_OK);
     }
 }

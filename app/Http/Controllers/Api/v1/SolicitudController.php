@@ -45,8 +45,8 @@ class SolicitudController extends Controller
         $user = request()->user();
         $trabajador = $solicitud->trabajador->user;
 
-        Mail::to($user->email)->send(new SolicitudCreada($solicitud));
-        Mail::to($trabajador->email)->send(new SolicitudNueva($solicitud));
+        // Mail::to($user->email)->send(new SolicitudCreada($solicitud));
+        // Mail::to($trabajador->email)->send(new SolicitudNueva($solicitud));
 
         $solicitud->load(['trabajador', 'cliente']);
 
@@ -73,9 +73,9 @@ class SolicitudController extends Controller
 
         $solicitud->update($request->validated());
 
-        if ($request->has('estado')) {
-            Mail::to($user->email)->send(new SolicitudEstadoCambiado($solicitud));
-        }
+        // if ($request->has('estado')) {
+        //     Mail::to($user->email)->send(new SolicitudEstadoCambiado($solicitud));
+        // }
 
         return new SolicitudResource($solicitud);
     }
@@ -84,7 +84,7 @@ class SolicitudController extends Controller
     {
         $user = $solicitud->cliente->user;
         
-        Mail::to($user->email)->send(new SolicitudRechazada($solicitud));
+        // Mail::to($user->email)->send(new SolicitudRechazada($solicitud));
 
         $solicitud->delete();
 

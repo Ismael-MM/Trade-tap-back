@@ -63,7 +63,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        Mail::to($user->email)->send(new RegistroCliente($user));
+        // Mail::to($user->email)->send(new RegistroCliente($user));
 
         return response()->noContent();
     }

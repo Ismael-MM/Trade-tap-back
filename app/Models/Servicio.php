@@ -18,8 +18,6 @@ class Servicio extends Model
      */
     protected $fillable = [
         'coste',
-        'serviciable_type',
-        'serviciable_id'
     ];
 
     /**

@@ -20,8 +20,6 @@ class ServicioStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'encargo_id' => ['required', 'integer', 'exists:encargos,id'],
-            'reserva_id' => ['required', 'integer', 'exists:reservas,id'],
         ];
     }
 }

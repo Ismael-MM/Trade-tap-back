@@ -15,10 +15,22 @@ class ProfesionController extends Controller
 {
     public function index(Request $request)
     {
-        $profesions = Profesion::all();
+        // Verificar si se solicita la paginación y obtener el número de página
+        if ($request->has('list') && $request->input('list') === 'true' && $request->has('page')) {
+            // Obtener el número de página desde la solicitud
+            $page = $request->input('page');
 
+            // Obtener las profesiones paginadas con un límite de 6 por página
+            $profesions = Profesion::paginate(6, ['*'], 'page', $page);
+        } else {
+            // Obtener todas las profesiones si no se especificó la paginación
+            $profesions = Profesion::all();
+        }
+
+        // Retornar una colección de profesiones según la lógica anterior
         return new ProfesionCollection($profesions);
     }
+
 
     public function store(ProfesionStoreRequest $request)
     {

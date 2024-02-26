@@ -15,7 +15,16 @@ class ValoracionController extends Controller
 {
     public function index(Request $request)
     {
-        $valoracions = Valoracion::all();
+        $user = $request->user();
+        $pageSize = 3;
+
+        if ($user->rol == "trabajador") {
+            $valoracions = Valoracion::where('trabajador_id', $user->userable_id)->paginate($pageSize);
+        } else {
+            $valoracions = Valoracion::where('cliente_id', $user->userable_id)->paginate($pageSize);
+        }
+
+        $valoracions->load(['trabajador', 'cliente']);
 
         return new ValoracionCollection($valoracions);
     }

@@ -26,6 +26,7 @@ class UserFactory extends Factory
             'provincia' => fake()->state(),
             'localidad' => fake()->city(),
             'cp' => fake()->postcode(),
+            'rol' => $this->faker->randomElement(["trabajador"]),
             'telefono' => fake()->mobileNumber(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),

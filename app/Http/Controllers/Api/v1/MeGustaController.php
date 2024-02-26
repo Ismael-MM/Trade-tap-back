@@ -39,6 +39,6 @@ class MeGustaController extends Controller
 
         $gustas = $cliente->trabajadors;
 
-        return response()->json(['user_roles' => $gustas], Response::HTTP_OK);
+        return response()->json(['gustas' => $gustas], Response::HTTP_OK);
     }
 }

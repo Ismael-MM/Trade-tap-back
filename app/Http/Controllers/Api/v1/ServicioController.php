@@ -36,6 +36,12 @@ class ServicioController extends Controller
     {
         $servicio->update($request->validated());
 
+        if ($request->serviciable_type === 'App\Models\Encargo') {
+            $servicio->load(['encargo']);
+        } elseif ($request->serviciable_type === 'App\Models\Reserva') {
+            $servicio->load(['reserva']);
+        }
+
         return new ServicioResource($servicio);
     }
 

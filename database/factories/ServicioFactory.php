@@ -22,9 +22,6 @@ class ServicioFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            'encargo_id' => Encargo::factory(),
-            'reserva_id' => Reserva::factory(),
-        ];
+        return [];
     }
 }

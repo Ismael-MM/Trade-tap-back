@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Servicio extends Model
@@ -17,8 +17,9 @@ class Servicio extends Model
      * @var array
      */
     protected $fillable = [
-        'encargo_id',
-        'reserva_id',
+        'coste',
+        'serviciable_type',
+        'serviciable_id'
     ];
 
     /**
@@ -28,18 +29,11 @@ class Servicio extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'encargo_id' => 'integer',
-        'reserva_id' => 'integer',
     ];
 
-    public function encargo(): BelongsTo
+    public function serviciable(): MorphTo
     {
-        return $this->belongsTo(Encargo::class);
-    }
-
-    public function reserva(): BelongsTo
-    {
-        return $this->belongsTo(Reserva::class);
+        return $this->morphTo();
     }
 
     public function valoracion(): HasOne

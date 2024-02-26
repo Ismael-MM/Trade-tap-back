@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('servicios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('encargo_id');
-            $table->foreignId('reserva_id');
+            $table->decimal('coste');
+            $table->nullableMorphs('serviciable');
             $table->timestamps();
         });
     }

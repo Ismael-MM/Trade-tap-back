@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Encargo extends Model
 {
@@ -34,8 +34,8 @@ class Encargo extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'fecha_entregada' => 'date',
-        'fecha_entregada1' => 'date',
+        'fecha_estimada_inicio' => 'date',
+        'fecha_estimada_final' => 'date',
         'trabajador_id' => 'integer',
         'cliente_id' => 'integer',
     ];
@@ -50,8 +50,8 @@ class Encargo extends Model
         return $this->belongsTo(Cliente::class);
     }
 
-    public function servicio(): HasOne
+    public function encargo(): MorphOne
     {
-        return $this->hasOne(Servicio::class);
+        return $this->morphOne(Servicio::class, 'serviciable');
     }
 }

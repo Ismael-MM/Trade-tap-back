@@ -23,7 +23,6 @@ class ReservaResource extends JsonResource
             'cliente' => ClienteResource::make($this->whenLoaded('cliente'))->only(['user']),
             'trabajador' => TrabajadorResource::make($this->whenLoaded('trabajador'))->only(['user']),
             'horarioReservas' => HorarioReservaCollection::make($this->whenLoaded('horarioReservas')),
-            'servicio' => ServicioResource::make($this->whenLoaded('servicio')),
         ];
     }
 }

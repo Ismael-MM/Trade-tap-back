@@ -18,13 +18,12 @@ class EncargoResource extends JsonResource
             'descripcion' => $this->descripcion,
             'presupuesto' => $this->presupuesto,
             'estado' => $this->estado,
-            'fecha_estimada_inicio' => $this->fecha_entregada,
-            'fecha_estimada_final' => $this->fecha_entregada1,
+            'fecha_estimada_inicio' => $this->fecha_estimada_inicio,
+            'fecha_estimada_final' => $this->fecha_estimada_final,
             'trabajador_id' => $this->trabajador_id,
             'cliente_id' => $this->cliente_id,
             'trabajador' => TrabajadorResource::make($this->whenLoaded('trabajador'))->only(['user']),
             'cliente' => ClienteResource::make($this->whenLoaded('cliente'))->only(['user']),
-            'servicio' => ServicioResource::make($this->whenLoaded('servicio')),
         ];
     }
 }

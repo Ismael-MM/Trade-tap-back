@@ -14,9 +14,14 @@ class ServicioResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'encargo_id' => $this->encargo_id,
-            'reserva_id' => $this->reserva_id,
-            'reserva' => ReservaResource::make($this->whenLoaded('reserva')),
+            'coste' => $this->coste,
+            'tipo_servicio' => $this->whenLoaded('serviciable', function () {
+                if ($this->servicioable_type === 'App\Models\Encargo') {
+                    return new EncargoResource($this->serviciable);
+                } elseif ($this->servicioable_type === 'App\Models\Reserva') {
+                    return new ReservaResource($this->serviciable);
+                }
+            }),
             'valoracion' => ValoracionResource::make($this->whenLoaded('valoracion')),
         ];
     }

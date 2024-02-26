@@ -29,8 +29,9 @@ Route::middleware(["throttle:4200,1"])->group(function () {  //solo para usu
 
 Route::middleware(['auth:sanctum', 'throttle:4200,1'])->group(function () {
 
-    Route::post('megusta',[MeGustaController::class, 'store']);
-    Route::delete('megusta',[MeGustaController::class, 'destroy']);
+    Route::post('megusta', [MeGustaController::class, 'store']);
+    Route::delete('megusta', [MeGustaController::class, 'destroy']);
+    Route::get('megusta', [MeGustaController::class, 'show']);
 
     Route::post('profesion', [ProfesionController::class, 'store']); //Crear una nueva profesión con aut
     Route::get('profesion/{profesion}', [ProfesionController::class, 'show']); //Mostrar información de una profesión

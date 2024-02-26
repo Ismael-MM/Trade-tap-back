@@ -27,6 +27,7 @@ class Servicio extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'coste' => 'decimal',
     ];
 
     public function serviciable(): MorphTo
